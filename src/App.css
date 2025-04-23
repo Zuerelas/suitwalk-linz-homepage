@@ -1,3 +1,32 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  margin-top: 180px; /* Adjust based on your header + nav height */
+  flex: 1;
+}
+
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Add this to your existing App.css */
+@media (max-width: 768px) {
+  .content-container {
+    margin-top: 160px; /* Slightly smaller top margin for mobile */
+  }
+  
+  .page-content {
+    padding: 1rem;
+  }
+}
+
+/* Keep the existing CSS below */
 .main-nav {
   background-color: #333;
   padding: 1rem;
@@ -81,8 +110,3 @@
   margin-left: 0.25rem;
 }
 
-.page-content {
-  padding: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
