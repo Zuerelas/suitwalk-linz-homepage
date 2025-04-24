@@ -3,6 +3,7 @@ import Navigation from './navigation';
 import './App.css';
 import Footer from './footer';
 import Home from './pages/home';
+import Regeln from './pages/regeln';
 
 // Import your page components
 // Example: import Home from './pages/Home';
@@ -20,7 +21,7 @@ function App() {
             <Route path="/info/unterkunfts-moeglichkeiten" element={<div className="page-content">Unterkunftsmöglichkeiten content</div>} />
             <Route path="/info/ablauf" element={<div className="page-content">Ablauf content</div>} />
             <Route path="/info/standort" element={<div className="page-content">Standort content</div>} />
-            <Route path="/regeln" element={<div className="page-content">Regeln content</div>} />
+            <Route path="/regeln" element={<Regeln />} />
             <Route path="/crew" element={<div className="page-content">Crew content</div>} />
             <Route path="*" element={<div className="page-content">Page not found</div>} />
           </Routes>

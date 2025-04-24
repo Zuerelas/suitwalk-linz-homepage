@@ -11,6 +11,84 @@
 
 .content-container {
     margin: 0;
+    background-color: #333;
+}
+
+.container-content {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #362020;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.container-content h1 {
+    color: #e03131;
+    font-size: 3.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.container-content h2 {
+    color: #b63e3e;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.container-content h2::after {
+    content: '';
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    top: 10px;
+    left: 0;
+    right: 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #b63e3e;
+    height: 3px;
+    width: 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.container-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.container-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.container-content ul li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 0.3rem;
+    color: #ffffff;
+}
+
+.container-content ul li::before {
+    content: '•';
+    color: #ffffff;
+    font-weight: bold;
+    display: inline-block;
+    width: 1.5em;
+    margin-left: 1.5em;
 }
 /* Staggered animation delays for multiple elements */
 .slide-in:nth-child(1) { transition-delay: 0.1s; }

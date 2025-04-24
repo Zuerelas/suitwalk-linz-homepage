@@ -31,9 +31,9 @@ function Home() {
                 </ScrollAnimation>
                 <ScrollAnimation>
                     <p>
-                        Die Suitwalk Linz ist die erste offizielle Fursuit-Parade durch die Innenstadt von Linz.
-                        Wir laden alle Furry-Enthusiasten, Fursuiter und Interessierte ein, Teil dieses einzigartigen Events zu sein.
-                        Die Parade führt durch die schönsten Ecken von Linz.
+                        Der Suitwalk Linz ist die erste Fursuit-Parade durch die Innenstadt von Linz.
+                        Wir laden alle Furry-Interessenten, Fursuiter und Interessierte ein, Teil dieses einzigartigen Events zu sein.
+                        Der Suitwalk führt durch die schönsten Ecken von Linz.
                     </p>
                 </ScrollAnimation>
 
@@ -53,8 +53,8 @@ function Home() {
                 </ScrollAnimation>
                 <ScrollAnimation>
                     <p>
-                        Egal ob im Fursuit, als Helfer oder Zuschauer - bei der Suitwalk Linz ist jeder willkommen!
-                        Informiere dich über die Anmeldemodalitäten und werde Teil dieser aufregenden Veranstaltung.
+                        Egal ob im Fursuit, als Helfer oder Zuschauer - bei dem Suitwalk Linz ist jeder willkommen!
+                        Informiere dich über die Anmeldung und werde Teil dieser aufregenden Veranstaltung.
                     </p>
                 </ScrollAnimation>
                 <ScrollAnimation>
