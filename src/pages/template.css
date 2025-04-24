@@ -1,12 +1,20 @@
-/* Since we're using sticky navigation now, we need less margin */
-@media (max-width: 1300px) {
-    .content-container {
-        margin-top: 0px;
-    }
+.slide-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
 }
 
-@media (max-width: 800px) {
-    .content-container {
-        margin-top: 0px;
-    }
+.slide-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
+
+.content-container {
+    margin: 0;
+}
+/* Staggered animation delays for multiple elements */
+.slide-in:nth-child(1) { transition-delay: 0.1s; }
+.slide-in:nth-child(2) { transition-delay: 0.2s; }
+.slide-in:nth-child(3) { transition-delay: 0.3s; }
+.slide-in:nth-child(4) { transition-delay: 0.4s; }
+.slide-in:nth-child(5) { transition-delay: 0.5s; }

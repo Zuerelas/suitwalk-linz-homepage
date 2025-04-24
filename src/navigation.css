@@ -146,7 +146,7 @@ div > h2 a {
     color: white;
     cursor: pointer;
     padding: 10px;
-    padding-right: 0.3vh;
+    padding-right: 1vh;
     display: flex;
     align-items: center;
     justify-content: center;
