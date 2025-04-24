@@ -1,12 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './navigation';
 import './App.css';
+
 import Footer from './footer';
 import Home from './pages/home';
 import Regeln from './pages/regeln';
-
-// Import your page components
-// Example: import Home from './pages/Home';
 
 function App() {
   return (
