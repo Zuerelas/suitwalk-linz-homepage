@@ -24,23 +24,22 @@
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
+    /* Changed from fixed to static positioning */
+    position: relative;
     width: 100%;
     background-color: #000000;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+    z-index: 999; /* Lower z-index than nav */
     padding: 10px 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav-wrapper {
-    position: fixed;
-    top: 120px;
+    position: sticky; /* Changed from fixed to sticky */
+    top: 0; /* Stick to the top of the viewport */
     left: 0;
     width: 100%;
     background: linear-gradient(90deg, #aa3030, #6f1111);
@@ -164,7 +163,7 @@ div > h2 a {
 /* Media queries for responsive design */
 @media (max-width: 1300px) {
     .nav-wrapper {
-        position: fixed;
+        position: sticky;
         top: 0;
         left: 0;
         width: 100%;

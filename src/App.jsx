@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './navigation';
 import './App.css';
 import Footer from './footer';
+import Home from './pages/home';
 
 // Import your page components
 // Example: import Home from './pages/Home';
@@ -13,7 +14,7 @@ function App() {
         <Navigation />
         <main className="content-container">
           <Routes>
-            <Route path="/" element={<div className="page-content">Home page content</div>} />
+            <Route path="/" element={<Home />} />
             <Route path="/info/strecke" element={<div className="page-content">Strecke content</div>} />
             <Route path="/info/anreise" element={<div className="page-content">Anreise content</div>} />
             <Route path="/info/unterkunfts-moeglichkeiten" element={<div className="page-content">Unterkunftsmöglichkeiten content</div>} />

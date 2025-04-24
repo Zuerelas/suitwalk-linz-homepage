@@ -5,7 +5,7 @@
 }
 
 .content-container {
-  margin-top: 180px; /* Adjust based on your header + nav height */
+  margin-top: 0px; /* Reduced margin since header is not fixed anymore */
   flex: 1;
 }
 
@@ -15,10 +15,10 @@
   padding: 2rem;
 }
 
-/* Add this to your existing App.css */
+/* Media queries */
 @media (max-width: 768px) {
   .content-container {
-    margin-top: 160px; /* Slightly smaller top margin for mobile */
+    margin-top: 20px;
   }
   
   .page-content {
