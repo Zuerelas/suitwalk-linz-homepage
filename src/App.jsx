@@ -6,6 +6,7 @@ import Footer from './footer';
 import Home from './pages/home';
 import Regeln from './pages/regeln';
 import Impressum from './pages/impressum';
+import Crew from './pages/crew';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route path="/info/ablauf" element={<div className="page-content">Ablauf content</div>} />
             <Route path="/info/standort" element={<div className="page-content">Standort content</div>} />
             <Route path="/regeln" element={<Regeln />} />
-            <Route path="/crew" element={<div className="page-content">Crew content</div>} />
+            <Route path="/crew" element={<Crew />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="*" element={<div className="page-content">Page not found</div>} />
           </Routes>

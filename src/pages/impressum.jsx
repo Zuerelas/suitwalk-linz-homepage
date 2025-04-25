@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
 import React from 'react';
 import ScrollAnimation from '../ScrollAnimation';
 import './template.css';
-import './impressum.css';
 
 function Impressum() {
     return (

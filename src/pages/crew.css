@@ -1,0 +1,112 @@
+/* Basic styling for the crew page */
+.crew-section {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.crew-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.crew-member {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.crew-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.crew-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border: 3px solid #b63e3e;
+}
+
+.crew-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.crew-image.placeholder {
+    background-color: #601e1e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 4rem;
+}
+
+.crew-member h3 {
+    color: #e03131;
+    margin-bottom: 0.5rem;
+}
+
+.crew-member a {
+    margin-bottom: 0;
+}
+.crew-role {
+    color: #b63e3e;
+    font-style: italic;
+    margin-bottom: 0.3rem;
+}
+
+p.about {
+    color: #cbcaca;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1300px) {
+    .crew-members {
+        gap: 2rem;
+
+    }
+    
+    .crew-member {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+#amaro {
+    background-image: url('../img/amaro.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#ksalir {
+    background-image: url('../img/ksalir.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#delta {
+    background-image: url('../img/delta.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
