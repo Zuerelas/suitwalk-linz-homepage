@@ -1,0 +1,4 @@
+#map {
+    height: 400px; /* Set a fixed height for the map container */
+    width: 100%;   /* Ensure the map spans the full width */
+}

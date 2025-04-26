@@ -7,6 +7,7 @@ import Home from './pages/home';
 import Regeln from './pages/regeln';
 import Impressum from './pages/impressum';
 import Crew from './pages/crew';
+import Strecke from './pages/info/strecke';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <main className="content-container">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/info/strecke" element={<div className="page-content">Strecke content</div>} />
+            <Route path="/info/strecke" element={<Strecke />} />
             <Route path="/info/anreise" element={<div className="page-content">Anreise content</div>} />
             <Route path="/info/unterkunfts-moeglichkeiten" element={<div className="page-content">Unterkunftsmöglichkeiten content</div>} />
             <Route path="/info/ablauf" element={<div className="page-content">Ablauf content</div>} />

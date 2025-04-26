@@ -55,7 +55,7 @@ function Crew() {
                                     <div className="crew-image" id='delta'></div>
                                     <h3>Delta</h3>
                                     <p className="crew-role">IT- & Websitemanagement</p>
-                                    <p className='about'>IT Manager und programmierer dieser Website</p>
+                                    <p className='about'>IT Manager und Programmierer dieser Website</p>
                                 </div>
                             </ScrollAnimation>
                         </a>
