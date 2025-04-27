@@ -1,3 +1,15 @@
+html {
+  background: linear-gradient(135deg, #451313, #691b1b, #681212);
+  background-size: 400% 400%;
+  animation: gradientAnimation 4s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -28,7 +40,6 @@
 
 /* Keep the existing CSS below */
 .main-nav {
-  background-color: #333;
   padding: 1rem;
   color: white;
 }

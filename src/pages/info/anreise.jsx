@@ -1,16 +1,14 @@
 import React from 'react';
 import ScrollAnimation from '../../ScrollAnimation';
 import '../template.css';
-import './anreise.css';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'; // Importing necessary components from react-leaflet
 import L from 'leaflet'; // Importing Leaflet for map functionality
 import 'leaflet/dist/leaflet.css'; // Importing Leaflet CSS for map styling
 import 'leaflet-routing-machine'; // Importing Leaflet Routing Machine for routing functionality
 
+// Define the coordinates for the map center and zoom level
 const position = [48.306821, 14.285493]; // Center of the map
 const zoom = 16; // Initial zoom level
 function Anreise() {
-    // Define the coordinates for the map center and zoom level
 
     React.useEffect(() => {
         let map;
@@ -26,7 +24,7 @@ function Anreise() {
 
             // Add a marker for the location
             const marker = L.marker(position).addTo(map); // Create a marker at the specified position
-            marker.bindPopup('<b>Treffpunkt</b><br>Hauptplatz Tiefgarage <br>Hauptplatz Tiefgarage Linz, 4020 Linz').openPopup(); // Bind a popup to the marker
+            marker.bindPopup('<b>Treffpunkt</b><br>Hauptplatz Tiefgarage, 4020 Linz').openPopup(); // Bind a popup to the marker
         }
 
         return () => {
@@ -46,7 +44,7 @@ function Anreise() {
                 <h2>Mit dem Auto</h2>
                 <p>Die Adresse für dein Navigationsgerät lautet: Hauptplatz Tiefgarage Linz, 4020 Linz.</p>
                 <h2>Mit dem Zug</h2>
-                <p>Der Linzer Hauptbahnhof ist nur wenige Minuten mit dem Auto entfernt. Von dort aus kannst du ein Taxi nehmen oder die Straßenbahnlinie 1 bis zur Haltestelle "Hauptplatz" nutzen.</p>
+                <p>Der Linzer Hauptbahnhof ist nur wenige Minuten mit dem Auto entfernt. Von dort aus kannst du ein Taxi nehmen oder die Straßenbahnlinien 1 und 2 Richtung Universität oder 3 und 4 Richtung Landgutstraße bis zur Haltestelle "Hauptplatz" nutzen.</p>
             </ScrollAnimation>
         </div>
     );
