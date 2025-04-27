@@ -8,6 +8,7 @@ import Regeln from './pages/regeln';
 import Impressum from './pages/impressum';
 import Crew from './pages/crew';
 import Strecke from './pages/info/strecke';
+import Anreise from './pages/info/anreise';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/info/strecke" element={<Strecke />} />
-            <Route path="/info/anreise" element={<div className="page-content">Anreise content</div>} />
+            <Route path="/info/anreise" element={<Anreise />} />
             <Route path="/info/unterkunfts-moeglichkeiten" element={<div className="page-content">Unterkunftsmöglichkeiten content</div>} />
             <Route path="/info/ablauf" element={<div className="page-content">Ablauf content</div>} />
             <Route path="/info/standort" element={<div className="page-content">Standort content</div>} />
