@@ -23,8 +23,41 @@ const pathCoordinates = [
     [48.308059, 14.288278],
     [48.309129, 14.290228],
     [48.309062, 14.289359],
-    [48.309447, 14.289949]
+    [48.309447, 14.289949],
+    [48.310548, 14.291359],
+    [48.311520, 14.292347],
+    [48.311322, 14.292805],
+    [48.310603, 14.292076],
+    [48.309977, 14.291384],
+    [48.309122, 14.290217]
 ]; // Coordinates for the marker
+
+const pointsOfInterest = [
+    {
+        title: "Start: Tiefgarage",
+        description: "Der Treffpunkt für den Suitwalk. Hier treffen sich alle Teilnehmer. Hier gibt es auch die Möglichkeit, sich umzuziehen und die ersten Fotos zu machen.",
+        coordinates: [48.306817, 14.285483],
+        image: "/src/img/tiefgarage.JPG"
+    },
+    {
+        title: "Lentos Kunstmuseum",
+        description: "Ein modernes Kunstmuseum mit beeindruckender Architektur. Ideal für kreative Fotos. Abweichend kann neben dem Gebäude auch fotografiert werden.",
+        coordinates: [48.308539, 14.288862],
+        image: "/src/img/lentos.JPG"
+    },
+    {
+        title: "Donaulände",
+        description: "Die Donaulände bietet eine unglaubliche Kulisse mit Blick auf die Donau. Perfekt für entspannte Fotos.",
+        coordinates: [48.309874, 14.290827],
+        image: "/src/img/donaulaende.JPG"
+    },
+    {
+        title: "Brucknerhaus",
+        description: "Das Brucknerhaus ist ein bekanntes Konzerthaus in Linz. Hier gibt es viele Möglichkeiten für kreative Fotos. Hier wird auch ein Gruppenfoto gemacht.",
+        coordinates: [48.310983, 14.292660],
+        image: "/src/img/brucknerhaus.jpg"
+    }
+];
 
 function Strecke() {
     // Initialize the map when the component mounts
@@ -43,6 +76,13 @@ function Strecke() {
 
             const polyline = L.polyline(pathCoordinates, { color: 'red' }).addTo(map); // Create a polyline with the coordinates
             map.fitBounds(polyline.getBounds()); // Fit the map to the polyline bounds
+
+            // Add markers for points of interest
+            pointsOfInterest.forEach((point) => {
+                L.marker(point.coordinates)
+                    .addTo(map)
+                    .bindPopup(`<b>${point.title}</b>`);
+            });
         }
 
         return () => {
@@ -57,13 +97,26 @@ function Strecke() {
             <ScrollAnimation>
                 <h1>Strecke</h1>
             </ScrollAnimation>
+            <ScrollAnimation>
+                <div id='map'></div>
+            </ScrollAnimation>
+            <p></p>
             <section>
                 <ScrollAnimation>
                     <h2>Streckenbeschreibung</h2>
-                </ScrollAnimation>
-                <div id='map'></div>
-                <ScrollAnimation>
-
+                    <div className="path-container">
+                        {pointsOfInterest.map((point, index) => (
+                            <ScrollAnimation key={index} className="point-container">
+                                <div className="point-image">
+                                    <img src={point.image} alt={point.title} onError={(e) => e.target.src = '/src/img/default.jpg'} />
+                                </div>
+                                <div className="point-details">
+                                    <h3>{point.title}</h3>
+                                    <p>{point.description}</p>
+                                </div>
+                            </ScrollAnimation>
+                        ))}
+                    </div>
                 </ScrollAnimation>
             </section>
         </div>

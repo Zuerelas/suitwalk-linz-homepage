@@ -1,4 +1,58 @@
 #map {
-    height: 400px; /* Set a fixed height for the map container */
-    width: 100%;   /* Ensure the map spans the full width */
+    height: 400px;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.path-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.point-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.point-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.point-image {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.point-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.point-details h3 {
+    color: #e03131;
+    margin-bottom: 0.5rem;
+}
+
+.point-details p {
+    color: #ddd;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    text-align: center;
 }
