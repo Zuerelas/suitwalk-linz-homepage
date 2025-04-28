@@ -3,6 +3,7 @@ import './App.css';
 
 import Navigation from './navigation';
 import Footer from './footer';
+import NotFound from './pages/notFound';
 import Home from './pages/home';
 import Regeln from './pages/regeln';
 import Impressum from './pages/impressum';
@@ -26,7 +27,7 @@ function App() {
             <Route path="/regeln" element={<Regeln />} />
             <Route path="/crew" element={<Crew />} />
             <Route path="/impressum" element={<Impressum />} />
-            <Route path="*" element={<div className="page-content">Page not found</div>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
