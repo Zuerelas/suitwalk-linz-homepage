@@ -68,6 +68,9 @@
     color: #ce8989;
     text-decoration: none;
 }
+.container-content a:hover {
+    text-decoration: underline;
+}
 
 .container-content p {
     font-size: 1.2rem;
@@ -95,6 +98,24 @@
     display: inline-block;
     width: 1.5em;
     margin-left: 1.5em;
+}
+
+.container-content .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color:#5e3030;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-size: 2rem;
+}
+.container-content .container a {
+    font-size: 2rem;
+    color: #ce8989;
+    text-decoration: none;
 }
 /* Staggered animation delays for multiple elements */
 .slide-in:nth-child(1) { transition-delay: 0.1s; }
