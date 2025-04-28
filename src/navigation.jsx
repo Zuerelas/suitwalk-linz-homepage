@@ -100,7 +100,6 @@ function Navigation() {
                             <li><Link to="/info/anreise" onClick={handleLinkClick}>Anreise</Link></li>
                             <li><Link to="/info/unterkunfts-moeglichkeiten" onClick={handleLinkClick}>Unterkunfts-<br />möglichkeiten</Link></li>
                             <li><Link to="/info/ablauf" onClick={handleLinkClick}>Ablauf</Link></li>
-                            <li><Link to="/info/standort" onClick={handleLinkClick}>Standort</Link></li>
                         </ul>
                     </div>
 

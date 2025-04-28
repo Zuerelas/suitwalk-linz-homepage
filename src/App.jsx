@@ -7,13 +7,11 @@ import NotFound from './pages/notFound';
 import Home from './pages/home';
 import Regeln from './pages/regeln';
 import Impressum from './pages/impressum';
-import Crew from './pages/crew';
 
 import Strecke from './pages/info/strecke';
 import Anreise from './pages/info/anreise';
 import Unterkunft from './pages/info/unterkunft';
 import Ablauf from './pages/info/ablauf';
-import Standort from './pages/info/standort';
 
 import Suiter from './pages/anmeldung/suiter';
 import Spotter from './pages/anmeldung/spotter';
@@ -32,6 +30,8 @@ import Barq from './pages/kontakt/barq';
 import X from './pages/kontakt/x';
 import Paypal from './pages/kontakt/paypal';
 
+import Crew from './pages/crew';
+
 function App() {
   return (
     <BrowserRouter>
@@ -44,7 +44,6 @@ function App() {
             <Route path="/info/anreise" element={<Anreise />} />
             <Route path="/info/unterkunfts-moeglichkeiten" element={<Unterkunft />} />
             <Route path="/info/ablauf" element={<Ablauf />} />
-            <Route path="/info/standort" element={<Standort />} />
             <Route path="/anmeldung/suiter" element={<Suiter />} />
             <Route path="/anmeldung/spotter" element={<Spotter />} />
             <Route path="/anmeldung/sanitaeter" element={<Sanitaeter />} />

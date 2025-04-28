@@ -111,6 +111,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     color: #ffffff;
     font-size: 2rem;
+    justify-self: center;
 }
 .container-content .container a {
     font-size: 2rem;
