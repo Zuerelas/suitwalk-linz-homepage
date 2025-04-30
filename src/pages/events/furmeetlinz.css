@@ -1,0 +1,61 @@
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 2rem;
+    border: 3px solid #b63e3e;
+}
+
+.event-highlight {
+    background: linear-gradient(145deg, #462929, #2d1a1a);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid #e03131;
+    text-align: left;
+}
+
+.date-display {
+    font-size: 2.2rem !important;
+    font-weight: bold;
+    color: #ffcc80 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.location-badge {
+    display: inline-block;
+    background-color: #5e3030;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.telegram-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(145deg, #6e3838, #4e2626);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.telegram-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.address-link {
+    transition: color 0.3s ease;
+    display: block;
+    line-height: 1.6;
+}
+
+.address-link:hover {
+    color: #ffcc80 !important;
+}

@@ -1,4 +1,3 @@
-import './home.css';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import backBanner from '../img/suitwalk-banner.JPG';
@@ -25,7 +24,7 @@ function Home() {
                 </div>
             </div>
 
-            <div className="home-content">
+            <div className="container-content">
                 <ScrollAnimation>
                     <h2>Worum geht es?</h2>
                 </ScrollAnimation>
