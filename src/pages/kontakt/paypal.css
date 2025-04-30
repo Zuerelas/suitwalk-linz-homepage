@@ -1,0 +1,107 @@
+/* Contact page styles */
+.donation-section,
+.about-donation,
+.thank-you {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background-color: #3d2626;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* PayPal donation button styles */
+.paypal-container {
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #4d2a2a;
+    border-radius: 12px;
+    max-width: 500px;
+}
+
+.paypal-container h3 {
+    color: #e8b9b9;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.paypal-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #512c2c, #3e2222);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    max-width: 300px;
+    transition: all 0.3s ease;
+    border: 2px solid #6d3c3c;
+}
+
+.paypal-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    text-decoration: none !important;
+    border-color: #b33e3e;
+}
+
+.paypal-button img {
+    max-width: 150px;
+    margin-bottom: 1rem;
+}
+
+.paypal-button span {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.donation-note {
+    font-size: 1rem;
+    font-style: italic;
+    color: #d4a6a6;
+    margin-top: 1.5rem;
+}
+
+.about-donation ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about-donation li {
+    text-align: left;
+    margin-bottom: 0.8rem;
+    position: relative;
+}
+
+.about-donation li::before {
+    content: '✓';
+    color: #e03131;
+    margin-right: 10px;
+}
+
+.thank-you p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e8b9b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-item {
+        width: 100%;
+    }
+    
+    .paypal-button {
+        padding: 1rem;
+    }
+    
+    .paypal-button span {
+        font-size: 1.2rem;
+    }
+}
