@@ -1,0 +1,136 @@
+/* Barq Contact Page Styling */
+
+.barq-container {
+    background-color: #472323;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid #683838;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.barq-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+}
+
+.barq-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #683838;
+}
+
+.barq-logo {
+    background-image: url('../../img/barq.png');
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.barq-logo:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.barq-icon {
+    width: 50px;
+    height: 50px;
+}
+
+.barq-info h2 {
+    margin: 0 0 0.5rem 0;
+    color: #ffffff;
+    font-size: 1.8rem;
+}
+
+.barq-info h2::after {
+    display: none;
+}
+
+.barq-username {
+    color: #ce8989;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.barq-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.barq-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #e03131 0%, #b63e3e 100%);
+    color: white !important;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(224, 49, 49, 0.4);
+    border: none;
+    cursor: pointer;
+    margin: 1rem 0;
+    max-width: 90%;
+    word-break: break-word;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.barq-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(224, 49, 49, 0.6);
+    text-decoration: none !important;
+    background: linear-gradient(135deg, #ff3b3b 0%, #c94545 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1300px) {
+    .barq-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .barq-logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .barq-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .barq-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .barq-logo {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .barq-button {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.7rem 1rem;
+        font-size: 1rem;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
