@@ -1,0 +1,164 @@
+/* Main Telegram contact page styling */
+.intro-text {
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #f0f0f0;
+}
+
+.telegram-channels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.channel-card {
+    background-color: #5e3030;
+    border-radius: 15px;
+    padding: 2.5rem;
+    width: 350px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.channel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.channel-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #0088cc, #29b6f6);
+}
+
+.channel-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #0088cc;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 136, 204, 0.4);
+}
+
+/* Telegram icons */
+.telegram-icon::before,
+.telegram-chat-icon::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M9.78 18.65l.28-4.22l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.telegram-chat-icon::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8zm-1-4h2v2h-2zm0-10h2v8h-2z'/%3E%3C/svg%3E");
+}
+
+.channel-card h2 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.channel-card h2::after {
+    width: 75%;
+    background-color: rgba(182, 62, 62, 0.5);
+}
+
+.channel-card p {
+    color: #e6e6e6;
+    margin-bottom: 1.8rem;
+    font-size: 1.1rem;
+}
+
+.telegram-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #0088cc, #29b6f6);
+    color: white !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 136, 204, 0.5);
+}
+
+.telegram-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 136, 204, 0.6);
+}
+
+/* Why Telegram section */
+.telegram-info {
+    background-color: #4a2727;
+    border-radius: 15px;
+    padding: 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.telegram-info h2 {
+    color: #e03131;
+    margin-bottom: 1.5rem;
+}
+
+.telegram-info p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+.download-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #e03131, #b63e3e);
+    color: white !important;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 10px rgba(224, 49, 49, 0.5);
+}
+
+.download-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(224, 49, 49, 0.6);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .telegram-channels {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    
+    .channel-card {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .telegram-info {
+        width: 90%;
+        padding: 2rem;
+    }
+    
+    .container-content h1 {
+        font-size: 2.5rem;
+    }
+}
