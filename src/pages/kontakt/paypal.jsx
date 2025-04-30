@@ -29,7 +29,7 @@ function Paypal() {
             <h1 className="slide-in">Auf PayPal spenden</h1>
             <div className="donation-section slide-in">
                 <h2>Unterstütze den Suitwalk Linz</h2>
-                <p>Mit Ihrer Spende helfen Sie uns, den Suitwalk Linz weiterzuführen und zu verbessern. Jeder Beitrag zählt!</p>
+                <p>Mit deiner Spende hilfst du uns, den Suitwalk Linz weiterzuführen und zu verbessern. Jeder Beitrag zählt!</p>
 
                 <div className="paypal-container slide-in">
                     <h3>Über PayPal spenden</h3>
@@ -57,7 +57,7 @@ function Paypal() {
             </div>
 
             <div className="thank-you slide-in">
-                <p>Herzlichen Dank für Ihre Unterstützung!</p>
+                <p>Herzlichen Dank für dein Unterstützung!</p>
             </div>
         </div>
     );

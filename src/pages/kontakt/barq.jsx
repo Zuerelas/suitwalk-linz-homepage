@@ -45,7 +45,7 @@ function Barq() {
 
                 <p className="barq-description">Offizieller Barq-Account für Suitwalk Events in Linz. Hier findest du alle Informationen zu kommenden Veranstaltungen und Aktivitäten.</p>
 
-                <a href="https://barq.social/suitwalk_linz" target="_blank" rel="noopener noreferrer" className="barq-button">
+                <a href="https://barq.app/c/l04wE9s" target="_blank" rel="noopener noreferrer" className="barq-button">
                     Folge uns auf Barq
                 </a>
             </div>
