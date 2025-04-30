@@ -1,0 +1,127 @@
+.x-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #1c1414;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+    .x-container {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+.x-logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.x-logo:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .x-logo {
+        margin-right: 2rem;
+        margin-bottom: 0;
+    }
+}
+
+.x-logo svg {
+    fill: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+
+.x-content {
+    flex: 1;
+}
+
+.x-button-container {
+    margin-top: 1.5rem;
+}
+
+.x-button {
+    display: inline-block;
+    background-color: #1DA1F2;
+    color: white !important;
+    font-weight: bold;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem !important;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+    box-shadow: 0 4px 10px rgba(29, 161, 242, 0.3);
+}
+
+.x-button:hover {
+    background-color: #1a91da;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(29, 161, 242, 0.4);
+    text-decoration: none !important;
+}
+
+.x-info {
+    background-color: #221515;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.x-info ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+.x-info ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.x-connect {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #221515;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hashtag {
+    color: #1DA1F2;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Animation enhancements */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.x-logo {
+    animation: pulse 3s infinite;
+}
+
+.x-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(29, 161, 242, 0.4);
+}
