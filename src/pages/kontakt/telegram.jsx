@@ -25,7 +25,7 @@ function Telegram() {
 
     return (
         <div className="container-content">
-            <h1 className="slide-in">Verbinde dich mit uns auf Telegram</h1>
+            <h1 className="slide-in">Verbinde dich mit Telegram</h1>
 
             <p className="slide-in intro-text">
                 Tritt unseren Telegram-Kanälen bei, um immer auf dem Laufenden zu bleiben und keine
