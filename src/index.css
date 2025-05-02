@@ -6,6 +6,7 @@
     margin: 0;
     width: 100%;
     cursor: url('./img/cursor.png'), auto;
+    scroll-behavior: smooth;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;

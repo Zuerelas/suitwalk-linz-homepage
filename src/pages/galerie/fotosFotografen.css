@@ -1,0 +1,162 @@
+.slick-image {
+  width: auto;  /* Changed from 100% to auto to maintain aspect ratio */
+  height: auto;
+  max-width: 100%;
+  max-height: 500px;  /* You can adjust this value as needed */
+  margin: 0 auto;  /* Center the image horizontally */
+  display: block;  /* Necessary for margin auto to work */
+}
+
+.slider-container {
+  width: 90%;  /* Slightly reduced from 100% to add some padding */
+  max-width: 1200px;  /* Prevent extremely wide sliders */
+  margin: 0 auto;
+  text-align: center;  /* Ensures centered content */
+}
+
+.slick-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Additional styles to center content in slides */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Make sure arrows are visible against any background */
+.slick-prev, .slick-next {
+  z-index: 1;
+}
+
+.slick-prev:before, .slick-next:before {
+  opacity: 0.75;
+  font-size: 24px;
+}
+
+/* Ensure slider maintains consistent height */
+.slick-track {
+  display: flex;
+  align-items: center;
+}
+
+.last-suitwalks {
+    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+}
+/* Stylish container for the photographer event listing */
+.container-fotografen {
+  display: flex;
+    flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #6e3838, #4e2626);
+  border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 
+              0 0 40px rgba(255, 82, 82, 0.1) inset;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.container-fotografen:hover {
+  transform: translateY(-8px) rotateX(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 
+              0 0 60px rgba(255, 82, 82, 0.2) inset;
+}
+
+.container.fotografen::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: rotate(-45deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.date {
+  font-size: 3rem;
+  align-self: center;
+  font-weight: 700;
+  color: #ffd8d8;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: inline-block;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.fotografen-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0 0.5rem;
+  margin: 0;
+  list-style: none;
+}
+
+.fotografen-item {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.fotografen-item:hover {
+  background: rgba(255, 82, 82, 0.3);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fotografen-item::before {
+  content: none !important; /* Override the bullet point from template.css */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .fotografen-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .fotografen-item {
+    width: 80%;
+  }
+  
+  .date {
+    font-size: 1.2rem;
+  }
+}

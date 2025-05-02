@@ -37,7 +37,7 @@ function Crew() {
                                 <div>
                                     <div className="crew-image" id='ksalir'></div>
                                     <h3>Ksalir</h3>
-                                    <p className="crew-role">2. Hauptorganisation</p>
+                                    <p className="crew-role">2. Hauptorganisator</p>
                                 </div>
                             </ScrollAnimation>
                         </a>
@@ -54,7 +54,7 @@ function Crew() {
                                 <div>
                                     <div className="crew-image" id='delta'></div>
                                     <h3>Delta</h3>
-                                    <p className="crew-role">IT- & Websitemanagement</p>
+                                    <p className="crew-role">IT- & Websitemanager</p>
                                     <p className='about'>IT Manager und Programmierer dieser Website</p>
                                 </div>
                             </ScrollAnimation>
