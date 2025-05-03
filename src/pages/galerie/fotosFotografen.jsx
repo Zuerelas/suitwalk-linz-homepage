@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ScrollAnimation from '../../ScrollAnimation';
 
 import brucknerhaus from "../../img/brucknerhaus.jpg";
 
@@ -16,7 +17,7 @@ function FotosFotografen() {
         // Add more suitwalks as needed
     ];
 
-    function getSuitwalks() {
+    function loadSuitwalks() {
         return suitwalks.map((suitwalk, index) => (
             <a href={suitwalk.link} key={index}>
                 < div className='container-fotografen' >
@@ -63,20 +64,32 @@ function FotosFotografen() {
 
     return (
         <div className="container-content">
-            <h1>Fotos von Fotografen</h1>
-            <p>Hier sind die Fotos der Fotografen zu finden.</p>
-            <p>Die Fotos werden nach dem Event hochgeladen.</p>
-            <h2>Einblick in den letzten Suitwalk:</h2>
-            <div className="slider-container">
-                <Slider dots={false} infinite={true} speed={500} slidesToShow={2} slidesToScroll={1} autoplay={true} autoplaySpeed={3000}>
-                    {loadImages()}
-                </Slider>
-            </div>
-            <h2>Alle Bilder der letzten Suitwalks</h2>
-            <p>Hier sind die Bilder der letzten Suitwalks zu finden. Und welche Fotografen uns dabei fotografiert haben.</p>
-            <div className='last-suitwalks'>
-                {getSuitwalks()}
-            </div>
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+                <h1>Fotos von Fotografen</h1>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+                <p>Hier sind die Fotos der Fotografen zu finden.</p>
+                <p>Die Fotos werden nach dem Event hochgeladen.</p>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+                <h2>Einblick in den letzten Suitwalk:</h2>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+                <div className="slider-container">
+                    <Slider dots={false} infinite={true} speed={500} slidesToShow={2} slidesToScroll={1} autoplay={true} autoplaySpeed={3000}>
+                        {loadImages()}
+                    </Slider>
+                </div>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+                <h2>Alle Bilder der letzten Suitwalks</h2>
+                <p>Hier sind die Bilder der letzten Suitwalks zu finden. Und welche Fotografen uns dabei fotografiert haben.</p>
+            </ScrollAnimation>
+            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+                <div className='last-suitwalks'>
+                    {loadSuitwalks()}
+                </div>
+            </ScrollAnimation>
         </div>
     );
 }
