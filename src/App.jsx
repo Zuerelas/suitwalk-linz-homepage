@@ -50,6 +50,8 @@ function App() {
             <Route path="/anmeldung/fotografen" element={<Fotografen />} />
             <Route path="/anmeldung/besucher" element={<Besucher />} />
             <Route path="/anmeldung/badges" element={<Badges />} />
+            <Route path="/anmeldung/erfolgreich" element={<h1>Anmeldung erfolgreich</h1>} />
+            <Route path="/api/telegram-auth" element={<h1>Telegram Authorisation</h1>} />
             <Route path="/regeln" element={<Regeln />} />
             <Route path="/galerie/fotos-fotografen" element={<FotosFotografen />} />
             <Route path="/events/furmeet-linz" element={<FurmeetLinz />} />

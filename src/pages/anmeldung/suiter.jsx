@@ -1,21 +1,49 @@
-import '../template.css'
+import '../template.css';
 import Countdown from '../../assets/countdown';
-import React from 'react';
+import React, { useState } from 'react';
+
+// Import the TelegramLoginWidget component
+// You'll need to create this file at src/components/TelegramLoginWidget.jsx
+import TelegramLoginWidget from '../../assets/TelegramLoginWidget';
 
 function Suiter() {
-    const onComplete = (
-        <>
-            <br />
-            <h2>Die Anmeldung ist offen!</h2>
-            <p>bitte hier anmelden:</p>
-        </>
-    );
+    const [countdownComplete, setCountdownComplete] = useState(false);
+
+    const handleCountdownComplete = () => {
+        setCountdownComplete(true);
+    };
+
     return (
         <div className="container-content">
-            <h1>Suiter</h1>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="SuitwalkLinz_bot"
-                data-size="large" data-auth-url="test.suitwalk-linz.at/anmeldung/erfolgreich" data-request-access="write"></script>
-            <Countdown targetDate={"2025-05-02T15:47:00"} onComplete={onComplete} titleText={"Zeit bis zur Anmeldung:"} />
+            <h1>Suiter-Anmeldung</h1>
+
+            {!countdownComplete ? (
+                <Countdown
+                    targetDate="2025-05-02T15:47:00"
+                    onComplete={handleCountdownComplete}
+                    titleText="Zeit bis zur Anmeldung:"
+                />
+            ) : (
+                <div className="registration-container">
+                    <h2>Die Anmeldung ist offen!</h2>
+                    <p>Bitte melde dich mit deinem Telegram-Account an:</p>
+
+                    <div className="telegram-widget-container">
+                        <TelegramLoginWidget
+                            botName="SuitwalkLinz_bot"
+                            authUrl="https://test.suitwalk-linz.at/api/telegram-auth"
+                            buttonSize="large"
+                            requestAccess="write"
+                            redirectUrl="https://test.suitwalk-linz.at/anmeldung/erfolgreich"
+                        />
+                    </div>
+
+                    <div className="registration-info">
+                        <p>Nach der Anmeldung mit Telegram werden deine Daten sicher in unsere Datenbank übertragen.</p>
+                        <p>Bei Fragen kontaktiere uns bitte über die <a href="/kontakt/telegram">Telegram-Gruppe</a>.</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

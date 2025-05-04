@@ -53,7 +53,7 @@ function Countdown({ targetDate, onComplete, titleText }) {
     };
 
     if (isComplete) {
-        return onComplete || null; // Return the provided HTML/React element or null if not provided
+        onComplete(); // Call the onComplete function when countdown is complete
     }
 
     const urgentState = isUrgent(timeLeft.days, timeLeft.hours, timeLeft.minutes, timeLeft.seconds);
