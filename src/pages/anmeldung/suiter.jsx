@@ -31,7 +31,7 @@ function Suiter() {
                     <div className="telegram-widget-container">
                         <TelegramLoginWidget
                             botName="SuitwalkLinz_bot"
-                            authUrl="https://api.suitwalk-linz.at/api/telegram-auth"
+                            authUrl="https://api.suitwalk-linz.at/"
                             buttonSize="large"
                             requestAccess="write"
                             redirectUrl="https://test.suitwalk-linz.at/anmeldung/erfolgreich"

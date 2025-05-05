@@ -6,4 +6,7 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   base: './',
   plugins: [react()],
+  server: {
+    historyApiFallback: true, // Add this line
+  },
 })
