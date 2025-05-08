@@ -19,13 +19,6 @@ function Error() {
         };
         
         setErrorMessage(errorMessages[msg]);
-        
-        // Redirect to registration page after 5 seconds
-        const timer = setTimeout(() => {
-            navigate('/anmeldung/suiter');
-        }, 5000);
-        
-        return () => clearTimeout(timer);
     }, [searchParams, navigate]);
 
     return (
@@ -34,9 +27,9 @@ function Error() {
             <div className="error-container">
                 <div className="error-icon">✗</div>
                 <p>{errorMessage}</p>
-                <p>Du wirst in einigen Sekunden zur Anmeldeseite weitergeleitet...</p>
+                <p>Wenn du ein Badge bestellen möchtest musst du dich vorher normal anmelden</p>
                 <button onClick={() => navigate('/anmeldung/suiter')} className="try-again-button">
-                    Erneut versuchen
+                    Erneut versuchen (als Suiter anmelden)
                 </button>
             </div>
         </div>
