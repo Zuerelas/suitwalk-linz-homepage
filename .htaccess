@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Proxy API requests to Vercel backend
+  RewriteCond %{REQUEST_URI} ^/api/telegram-auth [NC]
+  RewriteRule .* https://suitwalk-linz-backend.vercel.app/api/telegram-auth [R=307,L]
+
+  # Regular SPA routing
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>

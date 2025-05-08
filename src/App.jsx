@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom'; // Changed BrowserRouter to HashRouter
 import './pages/template.css';
 
 import Navigation from './navigation';
@@ -19,6 +19,8 @@ import Sanitaeter from './pages/anmeldung/sanitaeter';
 import Fotografen from './pages/anmeldung/fotografen';
 import Besucher from './pages/anmeldung/besucher';
 import Badges from './pages/anmeldung/badges';
+import Erfolgreich from './pages/anmeldung/erfolgreich';
+import Error from './pages/anmeldung/error';
 
 import FotosFotografen from './pages/galerie/fotosFotografen';
 
@@ -34,7 +36,7 @@ import Crew from './pages/crew';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter> {/* Changed BrowserRouter to HashRouter */}
       <div className="app-container">
         <Navigation />
         <main className="content-container">
@@ -50,8 +52,8 @@ function App() {
             <Route path="/anmeldung/fotografen" element={<Fotografen />} />
             <Route path="/anmeldung/besucher" element={<Besucher />} />
             <Route path="/anmeldung/badges" element={<Badges />} />
-            <Route path="/anmeldung/erfolgreich" element={<h1>Anmeldung erfolgreich</h1>} />
-            <Route path="/api/telegram-auth" element={<h1>Telegram Authorisation</h1>} />
+            <Route path="/anmeldung/erfolgreich" element={<Erfolgreich />} />
+            <Route path="/anmeldung/error" element={<Error />} />
             <Route path="/regeln" element={<Regeln />} />
             <Route path="/galerie/fotos-fotografen" element={<FotosFotografen />} />
             <Route path="/events/furmeet-linz" element={<FurmeetLinz />} />
@@ -67,7 +69,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

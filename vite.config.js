@@ -1,12 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
-
-// https://vite.dev/config/
 export default defineConfig({
   base: './',
   plugins: [react()],
   server: {
-    historyApiFallback: true, // Add this line
+    historyApiFallback: true, // Ensures React Router works in development
   },
 })
