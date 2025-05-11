@@ -15,11 +15,17 @@ function TelegramLoginWidget({ botName, buttonSize = 'large', requestAccess = 'w
         script.async = true;
         script.setAttribute('data-telegram-login', botName);
         script.setAttribute('data-size', buttonSize);
-        script.setAttribute('data-auth-url', 'https://test.suitwalk-linz.at/api/telegram-auth');
+        
+        // Add type and badge to the auth URL
+        const authUrl = new URL('https://test.suitwalk-linz.at/api/telegram-auth');
+        if (type) authUrl.searchParams.append('custom_type', type);
+        if (badge !== undefined) authUrl.searchParams.append('custom_badge', badge.toString());
+        
+        script.setAttribute('data-auth-url', authUrl.toString());
         script.setAttribute('data-request-access', requestAccess);
-        script.setAttribute('data-badge', badge);
-
-        // Add custom parameters
+        
+        // These aren't passed to the server but we'll keep them for consistency
+        if (badge !== undefined) script.setAttribute('data-badge', badge.toString());
         if (type) script.setAttribute('data-type', type);
 
         // Handle Telegram authentication callback

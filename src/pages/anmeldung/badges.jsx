@@ -23,7 +23,7 @@ function Badges() {
                         <div className="registration-container">
                             <h2>Die Anmeldung ist offen!</h2>
                             <p>Ein Badge kostet 5€.</p>
-                            <p>Die Badges werden am Suitwalk bezahlt je nach bestellung verkauft.</p>
+                            <p>Die Badges werden am Suitwalk bezahlt und verkauft.</p>
                             <p>Bitte melde dich mit deinem Telegram-Account an:</p>
         
                             <div className="telegram-widget-container">
