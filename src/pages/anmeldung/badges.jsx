@@ -1,69 +1,48 @@
 import '../template.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import TelegramLoginWidget from '../../assets/TelegramLoginWidget';
+import Countdown from '../../assets/countdown';
 
 function Badges() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [userData, setUserData] = useState(null);
-    const [orderStatus, setOrderStatus] = useState(null);
-
-    const handleTelegramAuth = (data) => {
-        setIsLoggedIn(true);
-        setUserData(data);
-    };
-
-    const handleOrderBadge = async () => {
-        if (!userData) return;
-
-        try {
-            const response = await fetch('https://test.suitwalk-linz.at/api/order-badge', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    telegram_id: userData.id,
-                }),
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                setOrderStatus('success');
-            } else {
-                setOrderStatus('error');
-                console.error('Error ordering badge:', result.message);
-            }
-        } catch (error) {
-            setOrderStatus('error');
-            console.error('Error ordering badge:', error);
+    const [countdownComplete, setCountdownComplete] = useState(true); // Set to true for testing
+        
+        const handleCountdownComplete = () => {
+            setCountdownComplete(true);
         }
-    };
 
     return (
         <div className="container-content">
-            <h1>Badge Bestellung</h1>
-            {!isLoggedIn ? (
-                <div>
-                    <p>Bitte melde dich mit deinem Telegram-Account an, um ein Badge zu bestellen.</p>
-                    <TelegramLoginWidget
-                        botName="SuitwalkLinz_bot"
-                        buttonSize="large"
-                        requestAccess="write"
-                        onAuth={handleTelegramAuth}
-                    />
+                    <h1>Badge-Anmeldung</h1>
+                    {!countdownComplete ? (
+                        <Countdown
+                            targetDate="2025-05-02T15:47:00"
+                            onComplete={handleCountdownComplete}
+                            titleText="Zeit bis zur Anmeldung:"
+                        />
+                    ) : (
+                        <div className="registration-container">
+                            <h2>Die Anmeldung ist offen!</h2>
+                            <p>Ein Badge kostet 5€.</p>
+                            <p>Die Badges werden am Suitwalk bezahlt je nach bestellung verkauft.</p>
+                            <p>Bitte melde dich mit deinem Telegram-Account an:</p>
+        
+                            <div className="telegram-widget-container">
+                                <TelegramLoginWidget
+                                    botName="SuitwalkLinz_bot"
+                                    buttonSize="large"
+                                    requestAccess="write"
+                                    type="Badges"
+                                    badge={true}
+                                />
+                            </div>
+        
+                            <div className="registration-info">
+                                <p>Nach der Anmeldung mit Telegram werden deine Daten sicher in unsere Datenbank übertragen.</p>
+                                <p>Bei Fragen kontaktiere uns bitte über die <a href="/#/kontakt/telegram">Telegram-Gruppe</a>.</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            ) : (
-                <div>
-                    <h2>Willkommen, {userData.first_name}!</h2>
-                    <p>Ein Badge kostet 5 Euro und kann hier bestellt werden. Du erhältst es beim Suitwalk.</p>
-                    <button onClick={handleOrderBadge} className="try-again-button">
-                        Badge bestellen
-                    </button>
-                    {orderStatus === 'success' && <p className="success-message">Dein Badge wurde erfolgreich bestellt!</p>}
-                    {orderStatus === 'error' && <p className="error-message">Es gab ein Problem bei der Bestellung. Bitte versuche es erneut.</p>}
-                </div>
-            )}
-        </div>
     );
 }
 

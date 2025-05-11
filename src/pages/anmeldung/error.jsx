@@ -1,4 +1,6 @@
 import '../template.css';
+import './sign-in.css';
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -27,10 +29,8 @@ function Error() {
             <div className="error-container">
                 <div className="error-icon">✗</div>
                 <p>{errorMessage}</p>
+                <p>Wenn dieser Fehler öfter auftritt bitte kontaktiere <a href="mailto:support@suitwalk-linz.at">support@suitwalk-linz.at</a></p>
                 <p>Wenn du ein Badge bestellen möchtest musst du dich vorher normal anmelden</p>
-                <button onClick={() => navigate('/anmeldung/suiter')} className="try-again-button">
-                    Erneut versuchen (als Suiter anmelden)
-                </button>
             </div>
         </div>
     );

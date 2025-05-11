@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-function TelegramLoginWidget({ botName, buttonSize = 'large', requestAccess = 'write', type, badge = false }) {
+function TelegramLoginWidget({ botName, buttonSize = 'large', requestAccess = 'write', type, badge = false, onAuth }) {
     const containerRef = useRef(null);
 
     useEffect(() => {
@@ -15,27 +15,23 @@ function TelegramLoginWidget({ botName, buttonSize = 'large', requestAccess = 'w
         script.async = true;
         script.setAttribute('data-telegram-login', botName);
         script.setAttribute('data-size', buttonSize);
-        
-        // Use test.suitwalk-linz.at domain (must match domain in BotFather)
         script.setAttribute('data-auth-url', 'https://test.suitwalk-linz.at/api/telegram-auth');
-        script.setAttribute('data-redirect-url', 'https://test.suitwalk-linz.at/#/anmeldung/erfolgreich');
         script.setAttribute('data-request-access', requestAccess);
-        
+        script.setAttribute('data-badge', badge);
+
         // Add custom parameters
         if (type) script.setAttribute('data-type', type);
-        if (badge !== undefined) script.setAttribute('data-badge', badge.toString());
-        
-        // Log for debugging
-        console.log('Telegram widget initialized with:', {
-            'data-telegram-login': botName,
-            'data-auth-url': 'https://test.suitwalk-linz.at/api/telegram-auth',
-            'data-redirect-url': 'https://test.suitwalk-linz.at/#/anmeldung/erfolgreich',
-            'data-type': type,
-            'data-badge': badge
-        });
+
+        // Handle Telegram authentication callback
+        window.TelegramLoginCallback = (user) => {
+            console.log('Telegram user authenticated:', user);
+            if (onAuth) {
+                onAuth(user); // Pass user data to parent component
+            }
+        };
 
         containerRef.current.appendChild(script);
-    }, [botName, buttonSize, requestAccess, type, badge]);
+    }, [botName, buttonSize, requestAccess, type, badge, onAuth]);
 
     return <div ref={containerRef} className="telegram-login-container"></div>;
 }

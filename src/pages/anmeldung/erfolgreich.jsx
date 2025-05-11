@@ -1,12 +1,13 @@
 import '../template.css';
+import './sign-in.css';
 
 function Erfolgreich() {
     return (
         <div className="container-content">
             <h1>Anmeldung erfolgreich!</h1>
             <div className="success-container">
-                <div className="success-icon">✓</div>
                 <h3>Vielen Dank für deine Anmeldung!</h3>
+                <p className="success-icon">✓</p>
                 <p>Deine Daten wurden erfolgreich gespeichert.</p>
                 <p>Wir freuen uns auf dich beim Suitwalk Linz!</p>
                 <h2>Noch ein Badge gefällig?</h2>
