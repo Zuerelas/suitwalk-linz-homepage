@@ -78,7 +78,9 @@ function Home() {
                                                 titleText="Zeit bis zur Anmeldung:"
                                             />
                                         ) : (
-                                            <SuitwalkUsers />
+                                            <ScrollAnimation>
+                                                <SuitwalkUsers />
+                                            </ScrollAnimation>
                                         )}
                 </ScrollAnimation>
 

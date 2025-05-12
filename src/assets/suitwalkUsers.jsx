@@ -77,10 +77,77 @@ function SuitwalkUsers() {
         }, {});
     };
 
-    // Get unique attendee types for filter
+    // Get unique attendee types for filter with predefined order
     const getAttendeeTypes = () => {
         if (!registrationData?.summary) return [];
-        return registrationData.summary.map(item => item.type);
+        
+        // Define the preferred order - update to consistently use "Sanitäter"
+        const preferredOrder = ['Suiter', 'Spotter', 'Fotograf', 'Sanitäter', 'Besucher'];
+        
+        // Get all available types
+        const availableTypes = registrationData.summary.map(item => item.type);
+        
+        // Return types in the preferred order (if they exist in the data)
+        // First include all types that match our preferred order
+        const orderedTypes = preferredOrder.filter(type => 
+            availableTypes.includes(type) || 
+            (type === 'Sanitäter' && availableTypes.includes('Sanitaeter'))
+        );
+        
+        // Then add any other types that might exist but aren't in our preferred list
+        const otherTypes = availableTypes.filter(type => 
+            !preferredOrder.includes(type) && 
+            !(type === 'Sanitaeter' && preferredOrder.includes('Sanitäter'))
+        );
+        
+        return [...orderedTypes, ...otherTypes];
+    };
+
+    // When displaying attendee sections, sort by the preferred order
+    const getSortedAttendeeTypes = () => {
+        const typeOrder = {
+            'Suiter': 1,
+            'Spotter': 2,
+            'Fotograf': 3,
+            'Sanitaeter': 4,
+            'Sanitäter': 4, // Same priority as Sanitaeter
+            'Besucher': 5
+        };
+        
+        const grouped = getAttendeesByType();
+        
+        // Sort the entries by the defined order
+        return Object.entries(grouped).sort((a, b) => {
+            const orderA = typeOrder[a[0]] || 999; // Default high value for unknown types
+            const orderB = typeOrder[b[0]] || 999;
+            return orderA - orderB;
+        });
+    };
+
+    // New function to sort the summary data for stats display
+    const getSortedSummary = () => {
+        if (!registrationData?.summary) return [];
+        
+        const typeOrder = {
+            'Suiter': 1,
+            'Spotter': 2,
+            'Fotograf': 3,
+            'Sanitaeter': 4,
+            'Sanitäter': 4, // Same priority
+            'Besucher': 5
+        };
+        
+        // Create a copy to avoid modifying the original data
+        return [...registrationData.summary].sort((a, b) => {
+            const orderA = typeOrder[a.type] || 999;
+            const orderB = typeOrder[b.type] || 999;
+            return orderA - orderB;
+        });
+    };
+
+    // Format type name for display (convert Sanitaeter to Sanitäter)
+    const formatTypeName = (type) => {
+        return type === 'Sanitaeter' ? 'Sanitäter' : type;
     };
 
     // Get appropriate class for user type
@@ -89,9 +156,9 @@ function SuitwalkUsers() {
             'Suiter': 'suiter',
             'Spotter': 'spotter',
             'Sanitaeter': 'sanitaeter',
+            'Sanitäter': 'sanitaeter',
             'Fotograf': 'fotograf',
-            'Besucher': 'besucher',
-            'Sanitäter': 'sanitaeter'
+            'Besucher': 'besucher'
         };
 
         return typeMap[type] || 'other';
@@ -135,9 +202,10 @@ function SuitwalkUsers() {
                                 <div className="stat-value">{registrationData?.totals?.badges || 0}</div>
                             </div>
 
-                            {registrationData?.summary?.map((item, index) => (
+                            {/* Use sorted summary data */}
+                            {getSortedSummary().map((item, index) => (
                                 <div className={`stat-card type-${getTypeClass(item.type)}`} key={index}>
-                                    <h3>{item.type || 'Unknown'}</h3>
+                                    <h3>{formatTypeName(item.type) || 'Unknown'}</h3>
                                     <div className="stat-value">{item.count}</div>
                                     <div className="stat-sub-value">({item.badge_count} mit Badge)</div>
                                 </div>
@@ -156,15 +224,15 @@ function SuitwalkUsers() {
                                 >
                                     <option value="all">Alle Teilnehmer</option>
                                     {getAttendeeTypes().map((type, index) => (
-                                        <option key={index} value={type}>{type}</option>
+                                        <option key={index} value={type}>{formatTypeName(type)}</option>
                                     ))}
                                 </select>
                             </div>
 
                             <div className="attendees-container">
-                                {Object.entries(getAttendeesByType()).map(([type, attendees]) => (
+                                {getSortedAttendeeTypes().map(([type, attendees]) => (
                                     <div className={`attendee-type-section type-${getTypeClass(type)}`} key={type}>
-                                        <h3 className="attendee-type-title">{type} ({attendees.length})</h3>
+                                        <h3 className="attendee-type-title">{formatTypeName(type)} ({attendees.length})</h3>
                                         <div className="attendee-list">
                                             {attendees.map((attendee, index) => (
                                                 <div className="attendee-item" key={index}>
@@ -175,16 +243,16 @@ function SuitwalkUsers() {
                                         </div>
                                     </div>
                                 ))}
-
+                                
                                 {getFilteredAttendees().length === 0 && (
                                     <div className="no-attendees">
-                                        <p>{filter === 'all' ? 'Noch keine Anmeldungen vorhanden.' : `Keine ${filter} angemeldet.`}</p>
+                                        <p>{filter === 'all' ? 'Noch keine Anmeldungen vorhanden.' : `Keine ${formatTypeName(filter)} angemeldet.`}</p>
                                     </div>
                                 )}
                             </div>
 
                             <div className="attendee-info">
-                                <p>Insgesamt {getFilteredAttendees().length} Teilnehmer {filter !== 'all' ? `als ${filter}` : ''} angemeldet</p>
+                                <p>Insgesamt {getFilteredAttendees().length} Teilnehmer {filter !== 'all' ? `als ${formatTypeName(filter)}` : ''} angemeldet</p>
                                 <p>🏷️ = Hat ein Badge bestellt</p>
                             </div>
                         </>
@@ -200,8 +268,15 @@ function SuitwalkUsers() {
                     )}
 
                     <div className="registration-message">
-                        <p>Du möchtest auch am Suitwalk teilnehmen?</p>
-                        <a href="/#/anmeldung/suiter" className="register-link">Jetzt anmelden</a>
+                        <p>Du möchtest auch am Suitwalk teilnehmen? Jetzt Anmelden!</p>
+                        <div className='registration-buttons'>
+                            <a href="/#/anmeldung/suiter" className="register-link">Suiter</a>
+                            <a href="/#/anmeldung/spotter" className="register-link">Spotter</a>
+                            <a href="/#/anmeldung/sanitaeter" className="register-link">Sanitäter</a>
+                            <a href="/#/anmeldung/fotografen" className="register-link">Fotografen</a>
+                            <a href="/#/anmeldung/besucher" className="register-link">Besucher</a>
+                            <a href="/#/anmeldung/badges" className="register-link">Badges</a>
+                        </div>
                     </div>
 
                     <div className="last-updated">
