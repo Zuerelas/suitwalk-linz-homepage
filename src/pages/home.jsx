@@ -1,10 +1,17 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, {useState} from 'react';
 import backBanner from '../img/suitwalk-banner.JPG';
 import './template.css';
 import ScrollAnimation from '../ScrollAnimation';
+import Countdown from '../assets/countdown';
+import SuitwalkUsers from '../assets/suitwalkUsers';
 
 function Home() {
+    const [countdownComplete, setCountdownComplete] = useState(true); // Set to true for testing
+            
+    const handleCountdownComplete = () => {
+        setCountdownComplete(true);
+    }
     return (
         <div className="home-container">
             <div className="home-banner" style={{ backgroundImage: `url(${backBanner})` }}>
@@ -59,6 +66,22 @@ function Home() {
                 <ScrollAnimation>
                     <Link to="/anmeldung/suiter" className="home-link">Zur Anmeldung</Link>
                 </ScrollAnimation>
+
+                <ScrollAnimation>
+                    <h1>Unser nächster Suitwalk:</h1>
+                </ScrollAnimation>
+                <ScrollAnimation>
+                    {!countdownComplete ? (
+                                            <Countdown
+                                                targetDate="2025-05-02T15:47:00"
+                                                onComplete={handleCountdownComplete}
+                                                titleText="Zeit bis zur Anmeldung:"
+                                            />
+                                        ) : (
+                                            <SuitwalkUsers />
+                                        )}
+                </ScrollAnimation>
+
             </div>
         </div>
     );
