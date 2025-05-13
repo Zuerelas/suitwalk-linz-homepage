@@ -10,6 +10,10 @@ import 'leaflet-control-geocoder'; // Import Leaflet Control Geocoder for geocod
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'; // Import Leaflet Control Geocoder CSS for geocoding styling
 //import 'leaflet-control-geocoder/dist/Control.Geocoder.js'; // Import Leaflet Control Geocoder JS for geocoding functionality
 //import 'leaflet-control-geocoder/dist/Control.Geocoder.js.map'; // Import Leaflet Control Geocoder JS map for geocoding functionality
+import Tiefgarage from '../../img/tiefgarage.JPG';
+import Lentos from '../../img/lentos.JPG';
+import Donaulaende from '../../img/donaulaende.JPG';
+import Brucknerhaus from '../../img/brucknerhaus.jpg';
 
 const pathCoordinates = [
     [48.306821, 14.285493],
@@ -37,25 +41,25 @@ const pointsOfInterest = [
         title: "Start: Tiefgarage",
         description: "Der Treffpunkt für den Suitwalk. Hier treffen sich alle Teilnehmer. Hier gibt es auch die Möglichkeit, sich umzuziehen und die ersten Fotos zu machen.",
         coordinates: [48.306817, 14.285483],
-        image: "/src/img/tiefgarage.JPG"
+        image: Tiefgarage
     },
     {
         title: "Lentos Kunstmuseum",
         description: "Ein modernes Kunstmuseum mit beeindruckender Architektur. Ideal für kreative Fotos. Abweichend kann neben dem Gebäude auch fotografiert werden.",
         coordinates: [48.308539, 14.288862],
-        image: "/src/img/lentos.JPG"
+        image: Lentos
     },
     {
         title: "Donaulände",
         description: "Die Donaulände bietet eine unglaubliche Kulisse mit Blick auf die Donau. Perfekt für entspannte Fotos.",
         coordinates: [48.309874, 14.290827],
-        image: "/src/img/donaulaende.JPG"
+        image: Donaulaende
     },
     {
         title: "Brucknerhaus",
         description: "Das Brucknerhaus ist ein bekanntes Konzerthaus in Linz. Hier gibt es viele Möglichkeiten für kreative Fotos. Hier wird auch ein Gruppenfoto gemacht.",
         coordinates: [48.310983, 14.292660],
-        image: "/src/img/brucknerhaus.jpg"
+        image: Brucknerhaus
     }
 ];
 
