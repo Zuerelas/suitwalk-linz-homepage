@@ -19,6 +19,8 @@ import Sanitaeter from './pages/anmeldung/sanitaeter';
 import Fotografen from './pages/anmeldung/fotografen';
 import Besucher from './pages/anmeldung/besucher';
 import Badges from './pages/anmeldung/badges';
+import Abmelden from './pages/anmeldung/abmelden';
+import Abgemeldet from './pages/anmeldung/abgemeldet';
 import Erfolgreich from './pages/anmeldung/erfolgreich';
 import Error from './pages/anmeldung/error';
 
@@ -52,8 +54,10 @@ function App() {
             <Route path="/anmeldung/fotografen" element={<Fotografen />} />
             <Route path="/anmeldung/besucher" element={<Besucher />} />
             <Route path="/anmeldung/badges" element={<Badges />} />
+            <Route path="/anmeldung/abmelden" element={<Abmelden />} />
             <Route path="/anmeldung/erfolgreich" element={<Erfolgreich />} />
             <Route path="/anmeldung/error" element={<Error />} />
+            <Route path="/anmeldung/abgemeldet" element={<Abgemeldet />} />
             <Route path="/regeln" element={<Regeln />} />
             <Route path="/galerie/fotos-fotografen" element={<FotosFotografen />} />
             <Route path="/events/furmeet-linz" element={<FurmeetLinz />} />

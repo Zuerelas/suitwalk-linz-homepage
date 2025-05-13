@@ -20,7 +20,8 @@ function Error() {
             'unknown_error': 'Ein unbekannter Fehler ist aufgetreten.',
             'telegram_id_missing': 'Die Telegram-ID ist erforderlich.',
             'register_first': 'Du musst dich zuerst registrieren, um ein Badge zu bestellen.',
-            'database_error': 'Es gibt ein Problem mit der Datenbank. Bitte versuche es später erneut.'
+            'database_error': 'Es gibt ein Problem mit der Datenbank. Bitte versuche es später erneut.',
+            'not_registered': 'Du bist nicht für den Suitwalk Linz registriert. Bitte registriere dich zuerst.',
         };
         
         setErrorMessage(errorMessages[msg]);

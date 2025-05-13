@@ -116,6 +116,7 @@ function Navigation() {
                             <li><Link to="/anmeldung/fotografen" onClick={handleLinkClick}>Fotografen</Link></li>
                             <li><Link to="/anmeldung/besucher" onClick={handleLinkClick}>Besucher</Link></li>
                             <li><Link to="/anmeldung/badges" onClick={handleLinkClick}>Badges</Link></li>
+                            <li><Link to="/anmeldung/abmelden" onClick={handleLinkClick}>Abmelden</Link></li>
                         </ul>
                     </div>
 
