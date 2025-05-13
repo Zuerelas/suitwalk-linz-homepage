@@ -36,7 +36,7 @@ import Crew from './pages/crew';
 
 function App() {
   return (
-    <HashRouter> {/* Changed BrowserRouter to HashRouter */}
+    <HashRouter>
       <div className="app-container">
         <Navigation />
         <main className="content-container">

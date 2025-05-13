@@ -1,0 +1,290 @@
+/* Styling for the Ablauf (procedure) page */
+
+.event-intro {
+    font-size: 1.3rem !important;
+    line-height: 1.8;
+    margin-bottom: 2.5rem !important;
+    text-align: center;
+    color: #f5f5f5 !important;
+}
+
+.event-highlight-box {
+    background: linear-gradient(145deg, #6e3838, #4e2626);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-highlight-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.highlight-icon {
+    background: rgba(0, 0, 0, 0.2);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #ff8080;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-content h3 {
+    color: #e03131;
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.highlight-content p {
+    font-size: 1.2rem !important;
+    margin: 0 !important;
+    color: #f0f0f0 !important;
+}
+
+.time-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem !important;
+    color: #ffcc80 !important;
+    font-weight: bold;
+}
+
+/* Timeline styling */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 75px;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, #ff8080, #ff8080, transparent);
+    z-index: 1;
+}
+
+.timeline-event {
+    display: flex;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.timeline-event:last-child {
+    margin-bottom: 0;
+}
+
+.time-block {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.time {
+    background: linear-gradient(135deg, #e03131, #b63e3e);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    min-width: 70px;
+    text-align: center;
+}
+
+.icon-container {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, #3a2929, #2d1a1a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 3px solid #451313;
+    color: #f0f0f0;
+    font-size: 1.5rem;
+}
+
+.event-details {
+    background: linear-gradient(145deg, #3a2929, #2d1a1a);
+    border-radius: 10px;
+    padding: 1.5rem;
+    flex: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.event-details:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.event-details h3 {
+    color: #ff8080;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.event-details p {
+    margin: 0 0 1rem 0 !important;
+    color: #f0f0f0 !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    font-style: italic;
+}
+
+/* Tips grid styling */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.tip-card {
+    background: linear-gradient(145deg, #3a2929, #2d1a1a);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.tip-card h3 {
+    color: #e03131;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.tip-card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.tip-card li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+    color: #f0f0f0;
+}
+
+/* Final note styling */
+.finish-note {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #ff8080;
+}
+
+.finish-note h3 {
+    color: #e03131;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.finish-note p {
+    margin: 0 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 50px;
+    }
+    
+    .time-block {
+        min-width: 100px;
+    }
+    
+    .time {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 60px;
+    }
+    
+    .icon-container {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .event-details {
+        padding: 1.2rem;
+    }
+    
+    .event-details h3 {
+        font-size: 1.2rem;
+    }
+    
+    .event-details p {
+        font-size: 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline::before {
+        display: none;
+    }
+    
+    .timeline-event {
+        flex-direction: column;
+    }
+    
+    .time-block {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .time {
+        margin-bottom: 0;
+    }
+    
+    .event-highlight-box {
+        flex-direction: column;
+        text-align: center;
+    }
+}

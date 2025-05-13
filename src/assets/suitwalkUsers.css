@@ -1,7 +1,9 @@
 .registration-dashboard.public {
-    padding: 20px;
+    padding: 15px;
     max-width: 900px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .stats-title {
@@ -364,21 +366,125 @@
     .tab-navigation {
         flex-direction: row;
         flex-wrap: wrap;
+        gap: 10px;
     }
     
     .tab-button {
         flex: 1;
         min-width: 120px;
-        margin: 5px;
+        margin: 0;
+        padding: 12px 15px; /* Larger touch target */
     }
     
     .statistics-container {
         flex-direction: column;
         align-items: center;
+        gap: 15px;
     }
     
     .stat-card {
         width: 100%;
         max-width: 300px;
+        min-width: unset;
+    }
+    
+    .registration-buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .register-link {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        min-width: calc(50% - 15px);
+        text-align: center;
+        box-sizing: border-box;
+    }
+    
+    .attendee-type-section {
+        padding: 15px;
+    }
+    
+    .attendee-type-title {
+        font-size: 1.3rem;
+    }
+    
+    .attendee-list {
+        justify-content: center;
+    }
+    
+    .type-filter {
+        width: 100%;
+        max-width: 300px;
+        padding: 12px; /* Larger touch target */
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .stat-card {
+        min-width: 100%;
+        padding: 15px;
+    }
+    
+    .stat-value {
+        font-size: 1.8rem;
+    }
+    
+    .stat-sub-value {
+        font-size: 0.8rem;
+    }
+    
+    .attendee-item {
+        width: calc(50% - 10px);
+        padding: 10px;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+    
+    .registration-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .register-link {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .loading-spinner {
+        padding: 20px;
+    }
+    
+    .spinner {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .attendee-type-title {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .attendee-name {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .attendee-item {
+        width: 100%;
+    }
+    
+    .tab-button {
+        width: 100%;
+    }
+    
+    .tab-navigation {
+        flex-direction: column;
     }
 }
