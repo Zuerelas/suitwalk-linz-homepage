@@ -1,0 +1,221 @@
+/* Events page styling */
+.events-intro {
+    font-size: 1.2rem !important;
+    line-height: 1.8;
+    margin-bottom: 2.5rem !important;
+    color: #f5f5f5 !important;
+    max-width: 800px;
+    margin: 0 auto 2.5rem auto !important;
+    text-align: center;
+}
+
+.convention-section {
+    margin-bottom: 4rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: #ff8080;
+    background: linear-gradient(145deg, #3a2929, #2d1a1a);
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.conventions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.convention-card {
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.furry-section .convention-card {
+    background: linear-gradient(145deg, #5e3333, #402222);
+    border-left: 4px solid #b12d2d;
+}
+
+.furry-section .convention-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 
+                0 0 60px rgba(255, 101, 101, 0.2) inset;
+}
+
+.non-furry-section .convention-card {
+    background: linear-gradient(145deg, #462929, #2d1a1a);
+    border-left: 4px solid #ff8080;
+}
+
+.non-furry-section .convention-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 
+                0 0 60px rgba(255, 82, 82, 0.2) inset;
+}
+
+.convention-card-inner {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.convention-card h3 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.convention-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+}
+
+.furry-section .convention-card h3::after {
+    background: linear-gradient(90deg, rgba(255, 101, 101, 0.7), transparent);
+}
+
+.non-furry-section .convention-card h3::after {
+    background: linear-gradient(90deg, rgba(255, 128, 128, 0.7), transparent);
+}
+
+.convention-details {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.convention-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ccc;
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.convention-description {
+    color: #f0f0f0;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.convention-link {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.furry-section .convention-link {
+    background: linear-gradient(135deg, #ff6565, #df4545);
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(255, 101, 101, 0.4);
+}
+
+.furry-section .convention-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255, 101, 101, 0.6);
+}
+
+.non-furry-section .convention-link {
+    background: linear-gradient(135deg, #e03131, #b63e3e);
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(224, 49, 49, 0.4);
+}
+
+.non-furry-section .convention-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(224, 49, 49, 0.6);
+}
+
+.conventions-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #ff8080;
+    text-align: center;
+}
+
+.conventions-info h3 {
+    color: #e03131;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.conventions-info p {
+    margin: 0 !important;
+    color: #f0f0f0 !important;
+}
+
+.conventions-info a {
+    color: #ff8080;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.conventions-info a:hover {
+    color: #ffcc80;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .conventions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .section-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .convention-card h3 {
+        text-align: center;
+        display: block;
+    }
+    
+    .convention-card h3::after {
+        left: 25%;
+        width: 50%;
+    }
+    
+    .convention-link {
+        width: 100%;
+    }
+}

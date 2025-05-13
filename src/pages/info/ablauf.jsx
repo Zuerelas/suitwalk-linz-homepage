@@ -68,16 +68,8 @@ function Ablauf() {
     return (
         <div className="container-content">
             <ScrollAnimation>
-                <h1>Ablauf des Suitwalk Linz</h1>
+                <h1>Ablauf</h1>
             </ScrollAnimation>
-
-            <ScrollAnimation>
-                <p className="event-intro">
-                    Der Suitwalk Linz ist ein gemeinsamer Spaziergang durch die Innenstadt von Linz, bei dem Fursuiter und Begleiter
-                    an verschiedenen markanten Punkten Halt machen, um Fotos zu machen und die Atmosphäre zu genießen.
-                </p>
-            </ScrollAnimation>
-
             <ScrollAnimation>
                 <div className="event-highlight-box">
                     <div className="highlight-icon">
@@ -122,7 +114,6 @@ function Ablauf() {
                         <ul>
                             <li>Denke an ausreichend Wasser und Kühlelemente</li>
                             <li>Suithandler/Spotter helfen dir auf dem Weg</li>
-                            <li>Bequeme Schuhe tragen</li>
                             <li>Regelmäßige Pausen sind eingeplant</li>
                         </ul>
                     </div>
