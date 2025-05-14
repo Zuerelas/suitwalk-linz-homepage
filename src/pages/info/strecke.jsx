@@ -15,6 +15,25 @@ import Lentos from '../../img/lentos.JPG';
 import Donaulaende from '../../img/donaulaende.JPG';
 import Brucknerhaus from '../../img/brucknerhaus.jpg';
 
+// Fix Leaflet icon issue
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+// Delete the default icon
+delete L.Icon.Default.prototype._getIconUrl;
+
+// Set up the default icon correctly
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl,
+    iconUrl,
+    shadowUrl,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+});
 const pathCoordinates = [
     [48.306821, 14.285493],
     [48.306507, 14.284477],

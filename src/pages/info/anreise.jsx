@@ -4,7 +4,25 @@ import '../template.css';
 import L from 'leaflet'; // Importing Leaflet for map functionality
 import 'leaflet/dist/leaflet.css'; // Importing Leaflet CSS for map styling
 import 'leaflet-routing-machine'; // Importing Leaflet Routing Machine for routing functionality
+// Fix Leaflet icon issue
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
+// Delete the default icon
+delete L.Icon.Default.prototype._getIconUrl;
+
+// Set up the default icon correctly
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl,
+    iconUrl,
+    shadowUrl,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+});
 // Define the coordinates for the map center and zoom level
 const position = [48.306821, 14.285493]; // Center of the map
 const zoom = 16; // Initial zoom level
