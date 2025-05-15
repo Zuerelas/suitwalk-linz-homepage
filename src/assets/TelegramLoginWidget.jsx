@@ -4,42 +4,58 @@ function TelegramLoginWidget({ botName, buttonSize = 'large', requestAccess = 'w
     const containerRef = useRef(null);
 
     useEffect(() => {
-        if (!containerRef.current) return;
+        const container = containerRef.current;
+        if (!container) return;
 
-        while (containerRef.current.firstChild) {
-            containerRef.current.removeChild(containerRef.current.firstChild);
+        // Clear previous widget
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
         }
 
+        // Use the official Telegram Login Widget
         const script = document.createElement('script');
-        script.src = 'https://telegram.org/js/telegram-widget.js?22';
+        script.src = 'https://telegram.org/js/telegram-widget.js?21';
         script.async = true;
         script.setAttribute('data-telegram-login', botName);
         script.setAttribute('data-size', buttonSize);
         
-        // Add type and badge to the auth URL
-        const authUrl = new URL('https://test.suitwalk-linz.at/api/telegram-auth');
-        if (type) authUrl.searchParams.append('custom_type', type);
-        if (badge !== undefined) authUrl.searchParams.append('custom_badge', badge.toString());
+        // For photo uploads, use callback
+        if (type === 'photo_upload' && onAuth) {
+            // Define global callback
+            window.onTelegramAuth = (user) => {
+                console.log('Telegram auth successful:', user);
+                if (onAuth) onAuth(user);
+            };
+            script.setAttribute('data-onauth', 'onTelegramAuth');
+        } else {
+            // For regular login flows, use auth URL
+            const baseUrl = 'https://test.suitwalk-linz.at/api/telegram-auth';
+            let authUrl = baseUrl;
+            
+            // Add query parameters if needed
+            if (type || badge !== undefined) {
+                const params = new URLSearchParams();
+                if (type) params.append('custom_type', type);
+                if (badge !== undefined) params.append('custom_badge', badge.toString());
+                authUrl = `${baseUrl}?${params.toString()}`;
+            }
+            
+            script.setAttribute('data-auth-url', authUrl);
+        }
         
-        script.setAttribute('data-auth-url', authUrl.toString());
         script.setAttribute('data-request-access', requestAccess);
         
-        // These aren't passed to the server but we'll keep them for consistency
-        if (badge !== undefined) script.setAttribute('data-badge', badge.toString());
-        if (type) script.setAttribute('data-type', type);
-
-        // Handle Telegram authentication callback
-        window.TelegramLoginCallback = (user) => {
-            console.log('Telegram user authenticated:', user);
-            if (onAuth) {
-                onAuth(user); // Pass user data to parent component
+        // Append to container
+        container.appendChild(script);
+        
+        return () => {
+            if (window.onTelegramAuth) {
+                delete window.onTelegramAuth;
             }
         };
-
-        containerRef.current.appendChild(script);
     }, [botName, buttonSize, requestAccess, type, badge, onAuth]);
 
-    return <div ref={containerRef} className="telegram-login-container"></div>;
+    return <div ref={containerRef}></div>;
 }
 
 export default TelegramLoginWidget;

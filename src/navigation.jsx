@@ -130,7 +130,8 @@ function Navigation() {
                     >
                         <h2>Galerie<ChevronDown className={`chevron ${activeMenu === 'galerie' ? 'rotate' : ''}`} /></h2>
                         <ul className={`${windowWidth <= responsiveBreakpoint ? (activeMenu === 'galerie' ? 'mobile-show' : 'mobile-hide') : 'hide'} nav-list`}>
-                            <li><Link to="/galerie/fotos-fotografen" onClick={handleLinkClick}>Fotos von Fotografen</Link></li>
+                            <li><Link to="/galerie/fotos" onClick={handleLinkClick}>Fotos</Link></li>
+                            <li><Link to="/galerie/upload" onClick={handleLinkClick}>Fotos hochladen</Link></li>
                         </ul>
                     </div>
 

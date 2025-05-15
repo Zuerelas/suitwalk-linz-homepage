@@ -6,92 +6,157 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ScrollAnimation from '../../ScrollAnimation';
 
-import brucknerhaus from "../../img/brucknerhaus.jpg";
-
 function FotosFotografen() {
-    const [images, setImages] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState({ photographer: 'all', tags: [] });
 
-    const suitwalks = [
-        { date: "12.4.2025", photographers: ["Fotograf 1", "Fotograf 2", "Fotograf 3", "Fotograf 4", "Fotograf 5"], link: "#" },
-        { date: "13.4.2025", photographers: ["Fotograf 6", "Fotograf 7", "Fotograf 8", "Fotograf 9", "Fotograf 10"], link: "#" },
-        // Add more suitwalks as needed
-    ];
-
-    function loadSuitwalks() {
-        return suitwalks.map((suitwalk, index) => (
-            <a href={suitwalk.link} key={index}>
-                < div className='container-fotografen' >
-                    <p className='date'>{suitwalk.date}</p>
-                    <ul className='fotografen-list'>
-                        {suitwalk.photographers.map((photographer, index) => (
-                            <li className='fotografen-item' key={index}>{photographer}</li>
-                        ))}
-                    </ul>
-                </div >
-            </a >
-        ));
+  useEffect(() => {
+    // Fetch all events
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch('https://suitwalk-linz-backend.vercel.app/api/gallery/events');
+        if (!response.ok) throw new Error('Failed to fetch events');
+        
+        const data = await response.json();
+        setEvents(data.events);
+        
+        // Select the most recent event by default
+        if (data.events.length > 0) {
+          setSelectedEvent(data.events[0].date);
+        }
+        
+        setLoading(false);
+      } catch (error) {
+        console.error("Error loading events:", error);
+        setLoading(false);
+      }
+    };
+    
+    fetchEvents();
+  }, []);
+  
+  useEffect(() => {
+    // Fetch photos for selected event
+    if (selectedEvent) {
+      setLoading(true);
+      
+      const fetchPhotos = async () => {
+        try {
+          const response = await fetch(`https://suitwalk-linz-backend.vercel.app/api/gallery/event/${selectedEvent}`);
+          if (!response.ok) throw new Error('Failed to fetch photos');
+          
+          const data = await response.json();
+          setPhotos(data.photos);
+          setLoading(false);
+        } catch (error) {
+          console.error("Error loading photos:", error);
+          setLoading(false);
+        }
+      };
+      
+      fetchPhotos();
     }
-    useEffect(() => {
-        const importImages = async () => {
-            try {
-                const imageModules = import.meta.glob('../../img/fotografen-slider/*.{png,jpg,jpeg,svg,JPG}');
-                const loadedImages = await Promise.all(
-                    Object.entries(imageModules).map(async ([path, importer]) => {
-                        const src = (await importer()).default;
-                        const alt = path.replace(/\.(png|jpe?g|svg)$/i, '').replace(/^.*[\\/]/, '');
-                        return { src, alt };
-                    })
-                );
-                setImages(loadedImages);
-            } catch (error) {
-                console.error("Error loading images:", error, "\nPlease contact a developer.");
-                setImages([{ src: brucknerhaus, alt: "Brucknerhaus" }]); // Fallback
-            }
-        };
+  }, [selectedEvent]);
+  
+  // Filter photos based on selected filters
+  const filteredPhotos = photos.filter(photo => {
+    if (filter.photographer !== 'all' && photo.photographer_name !== filter.photographer) {
+      return false;
+    }
+    
+    if (filter.tags.length > 0) {
+      const photoTags = photo.tags ? photo.tags.split(',') : [];
+      return filter.tags.some(tag => photoTags.includes(tag));
+    }
+    
+    return true;
+  });
+  
+  // Get unique photographers from current photos
+  const photographers = [...new Set(photos.map(photo => photo.photographer_name))];
 
-        importImages();
-    }, []);
-
-    function loadImages() {
-        return images.map((image, index) => (
-            <div>
-                <div key={index} className="image-container">
-                    <img src={image.src} alt={image.alt} className='slick-image' />
-                </div>
+  return (
+    <div className="container-content">
+      <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
+        <h1>Fotos vom Suitwalk Linz</h1>
+      </ScrollAnimation>
+      
+      {loading ? (
+        <div className="loading-spinner">Lädt Galerie...</div>
+      ) : (
+        <>
+          {/* Event selector */}
+          <div className="event-selector">
+            <h2>Wähle ein Event:</h2>
+            <div className="event-buttons">
+              {events.map(event => (
+                <button 
+                  key={event.date}
+                  className={selectedEvent === event.date ? 'active' : ''}
+                  onClick={() => setSelectedEvent(event.date)}
+                >
+                  {new Date(event.date).toLocaleDateString('de-AT')}
+                  <span className="count">{event.photo_count} Fotos</span>
+                </button>
+              ))}
             </div>
-        ));
-    }
-
-    return (
-        <div className="container-content">
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
-                <h1>Fotos von Fotografen</h1>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
-                <p>Hier sind die Fotos der Fotografen zu finden.</p>
-                <p>Die Fotos werden nach dem Event hochgeladen.</p>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
-                <h2>Einblick in den letzten Suitwalk:</h2>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
-                <div className="slider-container">
-                    <Slider dots={false} infinite={true} speed={500} slidesToShow={2} slidesToScroll={1} autoplay={true} autoplaySpeed={3000}>
-                        {loadImages()}
-                    </Slider>
+          </div>
+          
+          {/* Filters */}
+          <div className="gallery-filters">
+            <div className="filter-group">
+              <label>Fotograf:</label>
+              <select 
+                value={filter.photographer}
+                onChange={e => setFilter({...filter, photographer: e.target.value})}
+              >
+                <option value="all">Alle Fotografen</option>
+                {photographers.map(photographer => (
+                  <option key={photographer} value={photographer}>
+                    {photographer}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          
+          {/* Photo gallery */}
+          <div className="photo-gallery">
+            {filteredPhotos.length > 0 ? (
+              filteredPhotos.map(photo => (
+                <div key={photo.id} className="photo-item">
+                  <img 
+                    src={`/gallery/${selectedEvent}/${photo.photographer_name}/thumbnails/${photo.filename}`}
+                    alt={photo.title || 'Suitwalk Linz Foto'}
+                    onClick={() => window.open(
+                      `/gallery/${selectedEvent}/${photo.photographer_name}/full/${photo.filename}`,
+                      '_blank'
+                    )}
+                  />
+                  <div className="photo-info">
+                    <p className="photographer">© {photo.photographer_name}</p>
+                    {photo.title && <p className="title">{photo.title}</p>}
+                    <a 
+                      className="download-button" 
+                      href={`https://suitwalk-linz-backend.vercel.app/api/gallery/download/${photo.id}`}
+                      download
+                    >
+                      Download
+                    </a>
+                  </div>
                 </div>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
-                <h2>Alle Bilder der letzten Suitwalks</h2>
-                <p>Hier sind die Bilder der letzten Suitwalks zu finden. Und welche Fotografen uns dabei fotografiert haben.</p>
-            </ScrollAnimation>
-            <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
-                <div className='last-suitwalks'>
-                    {loadSuitwalks()}
-                </div>
-            </ScrollAnimation>
-        </div>
-    );
+              ))
+            ) : (
+              <p className="no-photos">Keine Fotos gefunden für die gewählten Filter.</p>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
 }
 
 export default FotosFotografen;

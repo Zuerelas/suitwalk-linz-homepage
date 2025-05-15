@@ -25,6 +25,7 @@ import Erfolgreich from './pages/anmeldung/erfolgreich';
 import Error from './pages/anmeldung/error';
 
 import FotosFotografen from './pages/galerie/fotosFotografen';
+import PhotoUpload from './pages/galerie/photoUpload';
 
 import FurmeetLinz from './pages/events/furmeetlinz';
 import Mehr from './pages/events/mehr';
@@ -35,6 +36,8 @@ import X from './pages/kontakt/x';
 import Paypal from './pages/kontakt/paypal';
 
 import Crew from './pages/crew';
+import PhotoManagement from './pages/admin/photoManagement';
+import AdminLogin from './pages/admin/login';
 
 function App() {
   return (
@@ -60,6 +63,8 @@ function App() {
             <Route path="/anmeldung/abgemeldet" element={<Abgemeldet />} />
             <Route path="/regeln" element={<Regeln />} />
             <Route path="/galerie/fotos-fotografen" element={<FotosFotografen />} />
+            <Route path="/galerie/fotos" element={<FotosFotografen />} />
+            <Route path="/galerie/upload" element={<PhotoUpload />} />
             <Route path="/events/furmeet-linz" element={<FurmeetLinz />} />
             <Route path="/events/mehr" element={<Mehr />} />
             <Route path="/kontakt/telegram" element={<Telegram />} />
@@ -68,6 +73,8 @@ function App() {
             <Route path="/kontakt/paypal" element={<Paypal />} />
             <Route path="/crew" element={<Crew />} />
             <Route path="/impressum" element={<Impressum />} />
+            <Route path="/admin/fotos" element={<PhotoManagement />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
