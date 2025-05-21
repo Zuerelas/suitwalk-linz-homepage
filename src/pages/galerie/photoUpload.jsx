@@ -179,6 +179,7 @@ function PhotoUpload() {
     e.preventDefault();
     setUploading(true);
     setUploadProgress(0);
+    setUploadResult(null); // Clear any previous messages
 
     // Prepare the form data
     const formData = new FormData();
@@ -215,8 +216,25 @@ function PhotoUpload() {
           setTitle('');
           setTags('');
         } else {
-          const errorMsg = xhr.responseText ? JSON.parse(xhr.responseText).error : 'Unknown error';
-          throw new Error(errorMsg);
+          let errorMsg = 'Unbekannter Fehler';
+          
+          try {
+            // Try to parse the error response
+            const errorResponse = JSON.parse(xhr.responseText);
+            errorMsg = errorResponse.error || errorResponse.details || errorMsg;
+            
+            // Special handling for invalid photographer key
+            if (xhr.status === 401 && errorMsg.includes('Invalid photographer key')) {
+              errorMsg = 'Ungültiger Fotograf-Schlüssel. Bitte überprüfe deine Eingabe.';
+            }
+          } catch (e) {
+            console.error('Failed to parse error response:', e);
+          }
+          
+          setUploadResult({
+            success: false,
+            message: errorMsg
+          });
         }
         setUploading(false);
       };
@@ -225,11 +243,24 @@ function PhotoUpload() {
         setUploadProgress(0);
         setUploadResult({
           success: false,
-          message: 'Netzwerkfehler beim Upload'
+          message: 'Netzwerkfehler beim Upload. Bitte prüfe deine Internetverbindung und versuche es erneut.'
         });
         setUploading(false);
       };
       
+      xhr.ontimeout = () => {
+        setUploadProgress(0);
+        setUploadResult({
+          success: false,
+          message: 'Zeitüberschreitung beim Upload. Der Server antwortet nicht. Bitte versuche es später erneut.'
+        });
+        setUploading(false);
+      };
+      
+      // Set timeout to 5 minutes - larger uploads may take time
+      xhr.timeout = 300000;
+      
+      // Send the request
       xhr.send(formData);
     } catch (error) {
       setUploadProgress(0);
@@ -331,6 +362,7 @@ function PhotoUpload() {
                     onChange={(e) => setPhotographerKey(e.target.value)}
                     required
                     placeholder="Bitte gib deinen Fotograf-Schlüssel ein"
+                    className={uploadResult && !uploadResult.success && uploadResult.message.includes('Fotograf-Schlüssel') ? "input-error" : ""}
                   />
                   <button 
                     type="button"
@@ -352,6 +384,9 @@ function PhotoUpload() {
                     )}
                   </button>
                 </div>
+                {uploadResult && !uploadResult.success && uploadResult.message.includes('Fotograf-Schlüssel') && (
+                  <p className="input-error-message">Ungültiger Schlüssel. Bitte überprüfe deine Eingabe.</p>
+                )}
               </div>
               
               <div className="form-group">

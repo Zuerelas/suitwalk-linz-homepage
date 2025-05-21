@@ -15,7 +15,7 @@ function AdminPanel() {
     }
 
     return (
-        <div className="admin-panel">
+        <div className="container-content admin-panel">
             {/* Navigation sidebar */}
             <div className="admin-sidebar">
                 <h2>Admin Panel</h2>

@@ -204,6 +204,17 @@
   height: 20px;
 }
 
+.input-error {
+  border-color: #e74c3c !important;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3) !important;
+}
+
+.input-error-message {
+  color: #e74c3c;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+
 @media (max-width: 768px) {
   .user-details {
     flex-direction: column;
