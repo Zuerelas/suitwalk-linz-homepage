@@ -166,6 +166,44 @@
   color: #e74c3c;
 }
 
+.password-input-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.password-input-container input {
+  flex: 1;
+  width: 100%;
+  padding-right: 40px; /* Make room for the toggle button */
+}
+
+.toggle-password-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transition: color 0.2s;
+  z-index: 2;
+}
+
+.toggle-password-button:hover {
+  color: #e03131;
+}
+
+.toggle-password-button svg {
+  width: 20px;
+  height: 20px;
+}
+
 @media (max-width: 768px) {
   .user-details {
     flex-direction: column;

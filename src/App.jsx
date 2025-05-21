@@ -37,7 +37,8 @@ import Paypal from './pages/kontakt/paypal';
 
 import Crew from './pages/crew';
 import PhotoManagement from './pages/admin/photoManagement';
-import AdminLogin from './pages/admin/login';
+import AdminPanel from './pages/admin/adminPanel';
+import Login from './pages/admin/login';
 
 function App() {
   return (
@@ -74,7 +75,8 @@ function App() {
             <Route path="/crew" element={<Crew />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/admin/fotos" element={<PhotoManagement />} />
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<Login />} />
+            <Route path="/admin/panel" element={<AdminPanel />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
