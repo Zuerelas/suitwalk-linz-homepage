@@ -36,7 +36,6 @@ import X from './pages/kontakt/x';
 import Paypal from './pages/kontakt/paypal';
 
 import Crew from './pages/crew';
-import PhotoManagement from './pages/admin/photoManagement';
 import AdminPanel from './pages/admin/adminPanel';
 import Login from './pages/admin/login';
 
@@ -74,7 +73,6 @@ function App() {
             <Route path="/kontakt/paypal" element={<Paypal />} />
             <Route path="/crew" element={<Crew />} />
             <Route path="/impressum" element={<Impressum />} />
-            <Route path="/admin/fotos" element={<PhotoManagement />} />
             <Route path="/admin" element={<Login />} />
             <Route path="/admin/panel" element={<AdminPanel />} />
             <Route path="*" element={<NotFound />} />

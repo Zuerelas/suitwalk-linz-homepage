@@ -61,6 +61,10 @@ function PhotographerManagement() {
       // Update state with fetched data
       setSuitwalkPhotographers(suitwalkData.photographers || []);
       setGalleryPhotographers(galleryData.photographers || []);
+
+      console.log('Fetched Suitwalk photographers:', suitwalkData);
+      console.log('Fetched Gallery photographers:', galleryData);
+      
       
     } catch (err) {
       console.error('Error fetching photographers:', err);
@@ -156,22 +160,19 @@ function PhotographerManagement() {
   
   // Filter photographers based on search term
   const filteredSuitwalkPhotographers = suitwalkPhotographers.filter(photographer => 
-    photographer.name.toLowerCase().includes(filter.toLowerCase()) ||
-    (photographer.email && photographer.email.toLowerCase().includes(filter.toLowerCase())) ||
-    (photographer.telegram_username && photographer.telegram_username.toLowerCase().includes(filter.toLowerCase()))
+    photographer.first_name.toLowerCase().includes(filter.toLowerCase())
   );
   
   const filteredGalleryPhotographers = galleryPhotographers.filter(photographer => 
-    photographer.name.toLowerCase().includes(filter.toLowerCase()) ||
-    (photographer.email && photographer.email.toLowerCase().includes(filter.toLowerCase())) ||
-    (photographer.telegram_username && photographer.telegram_username.toLowerCase().includes(filter.toLowerCase()))
+      photographer.name.toLowerCase().includes(filter.toLowerCase())
   );
-  
+
   // Check if a Suitwalk photographer is already in Gallery
   const isPhotographerInGallery = (suitwalkPhotographer) => {
     return galleryPhotographers.some(gp => 
-      (gp.telegram_id && suitwalkPhotographer.telegram_id && gp.telegram_id === suitwalkPhotographer.telegram_id) ||
-      (gp.email && suitwalkPhotographer.email && gp.email === suitwalkPhotographer.email)
+      // Match only on telegram_id since it exists in both tables
+      (gp.telegram_id && suitwalkPhotographer.telegram_id && 
+       gp.telegram_id.toString() === suitwalkPhotographer.telegram_id.toString())
     );
   };
 
@@ -218,12 +219,13 @@ function PhotographerManagement() {
                     {filteredSuitwalkPhotographers.map(photographer => (
                       <tr key={photographer.id} className={isPhotographerInGallery(photographer) ? 'already-added' : ''}>
                         <td>
-                          {photographer.name}
-                          {photographer.role === 'admin' && <span className="admin-badge">Admin</span>}
+                          {/* Construct name from first_name and last_name */}
+                          {`${photographer.first_name} ${photographer.last_name || ''}`}
+                          {photographer.type === 'admin' && <span className="admin-badge">Admin</span>}
                         </td>
                         <td>
-                          {photographer.telegram_username ? (
-                            <span className="telegram-username">@{photographer.telegram_username}</span>
+                          {photographer.username ? (
+                            <span className="telegram-username">@{photographer.username}</span>
                           ) : (
                             <span className="no-telegram">No Telegram</span>
                           )}
@@ -269,8 +271,9 @@ function PhotographerManagement() {
                       <tr key={photographer.id}>
                         <td>{photographer.name}</td>
                         <td>
-                          {photographer.telegram_username ? (
-                            <span className="telegram-username">@{photographer.telegram_username}</span>
+                          {/* Since we only have telegram_id, not username, just show if we have one or not */}
+                          {photographer.telegram_id ? (
+                            <span className="telegram-username">ID: {photographer.telegram_id}</span>
                           ) : (
                             <span className="no-telegram">No Telegram</span>
                           )}

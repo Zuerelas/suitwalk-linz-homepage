@@ -8,18 +8,11 @@ function Ablauf() {
     // Timeline events
     const timeline = [
         {
-            time: "13:00",
+            time: "13:30",
             title: "Treffpunkt & Umziehen",
             description: "Treffpunkt an der Hauptplatz Tiefgarage. Hier ist Zeit zum Umziehen, Kennenlernen und für erste Fotos.",
             icon: <FaUsers />,
             location: "Hauptplatz Tiefgarage, 4020 Linz"
-        },
-        {
-            time: "14:00",
-            title: "Offizielle Begrüßung",
-            description: "Gemeinsame Begrüßung durch die Organisatoren, Vorstellung der Spotter und wichtige Informationen zum Ablauf.",
-            icon: <FaUsers />,
-            location: "Tiefgarage Hauptplatz"
         },
         {
             time: "14:30",
@@ -29,39 +22,18 @@ function Ablauf() {
             location: "Vom Hauptplatz zum Lentos"
         },
         {
-            time: "15:00",
-            title: "Fotoshooting: Lentos Kunstmuseum",
-            description: "Fotostopp am Lentos Kunstmuseum mit seiner beeindruckenden Architektur - ideal für kreative Fotos.",
-            icon: <FaCamera />,
-            location: "Lentos Kunstmuseum"
+            time: "16:00",
+            title: "Rückkehr zur Tiefgarage",
+            description: "Gemeinsamer Rückweg zum Ausgangspunkt, wo die Teilnehmer sich umziehen können. Diese Zeit ist nur vorraussichtlich und kann variieren.",
+            icon: <FaWalking />,
+            location: "Zurück zur Tiefgarage"
         },
         {
-            time: "15:45",
-            title: "Fotoshooting: Donaulände",
-            description: "Weiter geht's zur Donaulände für Fotos mit der wunderschönen Kulisse der Donau im Hintergrund.",
-            icon: <FaCamera />,
-            location: "Donaulände"
-        },
-        {
-            time: "16:30",
-            title: "Großes Gruppenfoto",
-            description: "Großes Gruppenfoto aller Teilnehmer vor dem Brucknerhaus - ein Highlight für alle!",
-            icon: <FaCamera />,
-            location: "Brucknerhaus"
-        },
-        {
-            time: "17:15",
-            title: "Kaffeepause & Erfrischungen",
-            description: "Zeit für eine Erfrischung und Pause. Die Fursuiter können kurz abkühlen, während sich alle stärken können.",
+            time: "17:00",
+            title: "Linzer Stammtisch",
+            description: "Nach dem offiziellen Ende des Suitwalks treffen sich viele Teilnehmer noch zum gemütlichen Beisammensein. Details zum Treffpunkt werden am Tag bekannt gegeben. Jeder ist herzlich eingeladen!",
             icon: <FaCoffee />,
-            location: "Nähe Brucknerhaus"
-        },
-        {
-            time: "18:00",
-            title: "Rückweg zum Ausgangspunkt",
-            description: "Gemeinsamer Rückweg zum Ausgangspunkt, wo die Teilnehmer sich umziehen können.",
-            icon: <FaHome />,
-            location: "Zurück zum Hauptplatz"
+            location: "Wia z'Haus Lehner"
         }
     ];
 
@@ -78,7 +50,7 @@ function Ablauf() {
                     <div className="highlight-content">
                         <h3>Treffpunkt</h3>
                         <p>Hauptplatz Tiefgarage, 4020 Linz</p>
-                        <p className="time-note"><FaClock /> 13:00 Uhr</p>
+                        <p className="time-note"><FaClock /> 13:30 Uhr</p>
                     </div>
                 </div>
             </ScrollAnimation>
