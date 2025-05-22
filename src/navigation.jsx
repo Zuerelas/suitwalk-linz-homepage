@@ -8,7 +8,7 @@ function Navigation() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [activeMenu, setActiveMenu] = useState(null);
-    const responsiveBreakpoint = 800;
+    const responsiveBreakpoint = 1100;
 
     useEffect(() => {
         const handleResize = () => {

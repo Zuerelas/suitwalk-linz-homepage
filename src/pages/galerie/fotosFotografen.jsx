@@ -78,6 +78,76 @@ function FotosFotografen() {
   // Get unique photographers from current photos
   const photographers = [...new Set(photos.map(photo => photo.photographer_name))];
 
+  // Add this function inside your component to handle downloading all photos
+  const downloadAllPhotos = async () => {
+    if (!selectedEvent || filter.photographer === 'all') return;
+    
+    // Get all photos for the selected photographer
+    const photographerPhotos = photos.filter(photo => 
+      photo.photographer_name === filter.photographer
+    );
+    
+    if (photographerPhotos.length === 0) return;
+    
+    // Show a confirmation dialog
+    const confirmDownload = window.confirm(
+      `Möchten Sie alle ${photographerPhotos.length} Fotos von ${filter.photographer} herunterladen?`
+    );
+    
+    if (!confirmDownload) return;
+    
+    // Create a visual indicator that downloads are starting
+    const notification = document.createElement('div');
+    notification.style.position = 'fixed';
+    notification.style.bottom = '20px';
+    notification.style.right = '20px';
+    notification.style.background = 'rgba(0, 0, 0, 0.8)';
+    notification.style.color = 'white';
+    notification.style.padding = '15px 20px';
+    notification.style.borderRadius = '8px';
+    notification.style.zIndex = '9999';
+    notification.textContent = `Download von ${photographerPhotos.length} Fotos gestartet...`;
+    document.body.appendChild(notification);
+    
+    // Create an invisible iframe for each download
+    // We'll limit to 3 concurrent downloads to avoid overwhelming the browser
+    const maxConcurrent = 3;
+    let completed = 0;
+    
+    for (let i = 0; i < photographerPhotos.length; i += maxConcurrent) {
+      const batch = photographerPhotos.slice(i, i + maxConcurrent);
+      
+      // Start concurrent downloads for this batch
+      const promises = batch.map(photo => {
+        return new Promise(resolve => {
+          const iframe = document.createElement('iframe');
+          iframe.style.display = 'none';
+          iframe.src = `https://suitwalk-linz-backend.vercel.app/api/gallery/download/${photo.id}`;
+          
+          iframe.onload = () => {
+            document.body.removeChild(iframe);
+            completed++;
+            notification.textContent = `Download: ${completed} von ${photographerPhotos.length} Fotos`;
+            resolve();
+          };
+          
+          document.body.appendChild(iframe);
+        });
+      });
+      
+      // Wait for this batch to complete before starting the next
+      await Promise.all(promises);
+    }
+    
+    // Update notification when all downloads complete
+    notification.textContent = `${photographerPhotos.length} Fotos wurden erfolgreich heruntergeladen!`;
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 5000);
+  };
+
   return (
     <div className="container-content">
       <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={1}>
@@ -123,16 +193,28 @@ function FotosFotografen() {
             </div>
           </div>
           
+          {/* Add download all button */}
+          {filter.photographer !== 'all' && (
+            <div className="download-all-container">
+              <button className="download-all-button" onClick={downloadAllPhotos}>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm-1.5-3h3v-2h2l-3.5-4-3.5 4h2v2z"/>
+                </svg>
+                Alle Fotos von {filter.photographer} herunterladen ({filteredPhotos.length})
+              </button>
+            </div>
+          )}
+          
           {/* Photo gallery */}
           <div className="photo-gallery">
             {filteredPhotos.length > 0 ? (
               filteredPhotos.map(photo => (
                 <div key={photo.id} className="photo-item">
                   <img 
-                    src={`/gallery/${selectedEvent}/${photo.photographer_name}/thumbnails/${photo.filename}`}
+                    src={`/gallery/${selectedEvent}/${photo.photographer_id}/thumbnails/${photo.filename}`}
                     alt={photo.title || 'Suitwalk Linz Foto'}
                     onClick={() => window.open(
-                      `/gallery/${selectedEvent}/${photo.photographer_name}/full/${photo.filename}`,
+                      `/gallery/${selectedEvent}/${photo.photographer_id}/full/${photo.filename}`,
                       '_blank'
                     )}
                   />
