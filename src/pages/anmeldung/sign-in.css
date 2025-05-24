@@ -124,7 +124,28 @@
     font-size: 2rem;
 }
 
-/* Add this to your sign-in.css file */
+/* Add this to your anmeldung/sign-in.css file */
+.loading-container, 
+.error-message {
+  background: linear-gradient(145deg, #462929, #2d1a1a);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.loading-container {
+  color: #aaa;
+}
+
+.error-message {
+  color: #ff8080;
+  border-left: 4px solid #ff8080;
+}
+
 .warning {
     border-left: 4px solid #ff8080;
     background-color: rgba(255, 128, 128, 0.1);

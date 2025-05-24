@@ -101,3 +101,36 @@
     font-size: 1.2rem;
   }
 }
+
+.countdown-error {
+  background: rgba(255, 128, 128, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid rgba(255, 128, 128, 0.3);
+  text-align: center;
+}
+
+.event-info {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.event-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #ff8080;
+}
+
+.registration-status {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.registration-status.open {
+  color: #80ff80;
+}
+
+.registration-status.closed {
+  color: #ff8080;
+}
