@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import Dashboard from './dashboard';
 import PhotoManagement from './photoManagement';
 import PhotographerManagement from './photographerManagement';
+import SuitwalkEventsAdmin from './suitwalkEventsAdmin';
 
 function AdminPanel() {
     const [activeTab, setActiveTab] = useState('dashboard');
@@ -18,7 +19,7 @@ function AdminPanel() {
         <div className="container-content admin-panel">
             {/* Navigation sidebar */}
             <div className="admin-sidebar">
-                <h2>Admin Panel</h2>
+                <h1>Admin Panel</h1>
                 <nav>
                     <button
                         className={activeTab === 'dashboard' ? 'active' : ''}
@@ -38,6 +39,12 @@ function AdminPanel() {
                     >
                         Photographers
                     </button>
+                    <button
+                        className={activeTab === 'suitwalk-events' ? 'active' : ''}
+                        onClick={() => setActiveTab('suitwalk-events')}
+                    >
+                        Suitwalk Events
+                    </button>
                     <button className="logout" onClick={logout}>Logout</button>
                 </nav>
             </div>
@@ -47,6 +54,7 @@ function AdminPanel() {
                 {activeTab === 'dashboard' && <Dashboard />}
                 {activeTab === 'photos' && <PhotoManagement />}
                 {activeTab === 'photographers' && <PhotographerManagement />}
+                {activeTab === 'suitwalk-events' && <SuitwalkEventsAdmin />}
             </div>
         </div>
     );
