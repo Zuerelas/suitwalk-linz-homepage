@@ -219,6 +219,32 @@ function SuitwalkEventsAdmin() {
     });
   };
 
+  // Helper function to format date in EU style
+  const formatDateEU = (dateString) => {
+    if (!dateString) return '';
+    
+    try {
+      // For date-only strings (YYYY-MM-DD)
+      if (dateString.length === 10) {
+        const [year, month, day] = dateString.split('-');
+        return `${day}.${month}.${year}`;
+      }
+      
+      // For datetime-local strings (YYYY-MM-DDTHH:MM)
+      const date = new Date(dateString);
+      return date.toLocaleString('de-DE', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch (e) {
+      console.error('Date formatting error:', e);
+      return dateString;
+    }
+  };
+
   return (
     <div className="suitwalk-events-admin">
       <h2>{editingId ? 'Event bearbeiten' : 'Neue Suitwalk Veranstaltung'}</h2>
@@ -248,6 +274,11 @@ function SuitwalkEventsAdmin() {
             onChange={handleChange} 
             required 
           />
+          {form.event_date && (
+            <div className="date-format-hint">
+              Ausgewähltes Datum: {formatDateEU(form.event_date)}
+            </div>
+          )}
         </div>
         
         <div className="form-group">
@@ -260,6 +291,11 @@ function SuitwalkEventsAdmin() {
             onChange={handleChange} 
             required 
           />
+          {form.sign_in_start && (
+            <div className="date-format-hint">
+              Ausgewählter Zeitpunkt: {formatDateEU(form.sign_in_start)}
+            </div>
+          )}
         </div>
         
         <div className="form-group">
@@ -272,6 +308,11 @@ function SuitwalkEventsAdmin() {
             onChange={handleChange} 
             required 
           />
+          {form.sign_in_end && (
+            <div className="date-format-hint">
+              Ausgewählter Zeitpunkt: {formatDateEU(form.sign_in_end)}
+            </div>
+          )}
         </div>
         
         <div className="form-group">

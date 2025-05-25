@@ -64,6 +64,32 @@ html {
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .container-content {
+        max-width: 98vw;
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .container-content {
+        max-width: 100vw;
+        padding: 2rem 0.5rem;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-content {
+        padding: 1rem 0.2rem;
+        border-radius: 0;
+        margin: 0;
+    }
 }
 
 .container-content::before {
@@ -545,7 +571,7 @@ html {
     }
 
     .content-container {
-        margin-top: 20px;
+        margin-top: 0;
     }
     
     .page-content {

@@ -212,6 +212,85 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 
+/* Additional styles for badge success page */
+.badge-info {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.badge-info h4 {
+    color: #ff8080;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.badge-info ul {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.badge-info li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.badge-info strong {
+    color: #ffcc80;
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.primary-button, .secondary-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.primary-button {
+    background: linear-gradient(135deg, #e03131, #b63e3e);
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(224, 49, 49, 0.4);
+}
+
+.primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(224, 49, 49, 0.6);
+}
+
+.secondary-button {
+    background: rgba(0, 0, 0, 0.2);
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.secondary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Hide default link underlines for button links */
+.primary-button::after,
+.secondary-button::after {
+    display: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .success-container,
@@ -237,6 +316,17 @@
     .delete-button, .cancel-button {
         width: 100%;
         margin-bottom: 10px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .primary-button, .secondary-button {
+        width: 100%;
         text-align: center;
     }
 }

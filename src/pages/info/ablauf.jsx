@@ -85,7 +85,7 @@ function Ablauf() {
                         <h3>Für Fursuiter</h3>
                         <ul>
                             <li>Denke an ausreichend Wasser und Kühlelemente</li>
-                            <li>Suithandler/Spotter helfen dir auf dem Weg</li>
+                            <li>Spotter helfen dir auf dem Weg</li>
                             <li>Regelmäßige Pausen sind eingeplant</li>
                         </ul>
                     </div>
@@ -102,7 +102,7 @@ function Ablauf() {
                         <h3>Für Alle Teilnehmer</h3>
                         <ul>
                             <li>Bitte beachte unsere <a href="/#/regeln">Regeln</a></li>
-                            <li>Bei Fragen wende dich an die Organisatoren mit der roten Armbinde</li>
+                            <li>Bei Fragen wende dich an die Organisatoren</li>
                             <li>Der Suitwalk findet auch bei leichtem Regen statt</li>
                             <li>Die gesamte Route ist etwa 2,5 km lang</li>
                         </ul>
@@ -113,8 +113,8 @@ function Ablauf() {
             <ScrollAnimation>
                 <div className="finish-note">
                     <h3>Nach dem Suitwalk</h3>
-                    <p>Nach dem offiziellen Ende des Suitwalks treffen sich viele Teilnehmer noch zum gemütlichen Beisammensein.
-                        Details zum Treffpunkt werden am Tag bekannt gegeben. Jeder ist herzlich eingeladen!</p>
+                    <p>Nach dem offiziellen Ende des Suitwalks treffen sich viele Teilnehmer beim Linzer Stammtisch.
+                         Jeder ist herzlich eingeladen!</p>
                 </div>
             </ScrollAnimation>
         </div>

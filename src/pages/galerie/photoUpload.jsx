@@ -290,51 +290,6 @@ function PhotoUpload() {
                 type="photo_upload"
                 id="TelegramWidget"
               />
-              <div style={{marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px'}}>
-                <button 
-                  onClick={() => handleTelegramAuth({
-                    id: 12345,
-                    first_name: 'Test',
-                    last_name: 'User',
-                    username: 'testuser',
-                    photo_url: 'https://via.placeholder.com/100',
-                    auth_date: Math.floor(Date.now() / 1000)
-                  })}
-                  style={{
-                    padding: '10px 15px',
-                    backgroundColor: '#333',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Debug: Simulate Telegram Login
-                </button>
-                
-                <button
-                  onClick={() => {
-                    // Test if popups are allowed at all
-                    const testPopup = window.open('about:blank', '_blank', 'width=500,height=500');
-                    if (!testPopup || testPopup.closed) {
-                      alert("Popups are blocked by your browser. Please allow popups for this site.");
-                    } else {
-                      testPopup.close();
-                      alert("Popups are allowed. Telegram login should work if configured correctly.");
-                    }
-                  }}
-                  style={{
-                    padding: '10px 15px',
-                    backgroundColor: '#555',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '5px',
-                    cursor: 'pointer'
-                  }}
-                >
-                  Test Popup Permissions
-                </button>
-              </div>
             </div>
           </div>
         ) : (

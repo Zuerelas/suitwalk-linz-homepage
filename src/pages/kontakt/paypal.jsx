@@ -57,7 +57,7 @@ function Paypal() {
             </div>
 
             <div className="thank-you slide-in">
-                <p>Herzlichen Dank für dein Unterstützung!</p>
+                <p>Herzlichen Dank für deine Unterstützung!</p>
             </div>
         </div>
     );

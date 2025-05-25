@@ -7,7 +7,8 @@ function SuitwalkUsers() {
     const [error, setError] = useState(null);
     const [registrationData, setRegistrationData] = useState(null);
     const [activeTab, setActiveTab] = useState('stats'); // 'stats' or 'attendees'
-    const [filter, setFilter] = useState('all'); // Filter for attendee types
+    // const [filter, setFilter] = useState('all'); // Filter for attendee types
+    const [chartType, setChartType] = useState('bar'); // 'bar' or 'pie'
 
     // Fetch public registration data
     const fetchPublicStats = async () => {
@@ -26,7 +27,6 @@ function SuitwalkUsers() {
             }
 
             const data = await response.json();
-            console.log('Fetched data:', data);
             setRegistrationData(data);
             setError(null);
         } catch (err) {
@@ -57,11 +57,7 @@ function SuitwalkUsers() {
     const getFilteredAttendees = () => {
         if (!registrationData?.attendees) return [];
 
-        if (filter === 'all') {
-            return registrationData.attendees;
-        }
-
-        return registrationData.attendees.filter(attendee => attendee.type === filter);
+        return registrationData.attendees;
     };
 
     // Group attendees by type
@@ -78,30 +74,6 @@ function SuitwalkUsers() {
     };
 
     // Get unique attendee types for filter with predefined order
-    const getAttendeeTypes = () => {
-        if (!registrationData?.summary) return [];
-        
-        // Define the preferred order - update to consistently use "Sanitäter"
-        const preferredOrder = ['Suiter', 'Spotter', 'Fotograf', 'Sanitäter', 'Besucher'];
-        
-        // Get all available types
-        const availableTypes = registrationData.summary.map(item => item.type);
-        
-        // Return types in the preferred order (if they exist in the data)
-        // First include all types that match our preferred order
-        const orderedTypes = preferredOrder.filter(type => 
-            availableTypes.includes(type) || 
-            (type === 'Sanitäter' && availableTypes.includes('Sanitaeter'))
-        );
-        
-        // Then add any other types that might exist but aren't in our preferred list
-        const otherTypes = availableTypes.filter(type => 
-            !preferredOrder.includes(type) && 
-            !(type === 'Sanitaeter' && preferredOrder.includes('Sanitäter'))
-        );
-        
-        return [...orderedTypes, ...otherTypes];
-    };
 
     // When displaying attendee sections, sort by the preferred order
     const getSortedAttendeeTypes = () => {
@@ -164,6 +136,39 @@ function SuitwalkUsers() {
         return typeMap[type] || 'other';
     };
 
+    // Get chart color for user type
+    const getTypeColor = (type) => {
+        const colorMap = {
+            'Suiter': '#3a5c8a',
+            'Spotter': '#3a8a5c',
+            'Sanitaeter': '#2c5d3a',
+            'Sanitäter': '#2c5d3a',
+            'Fotograf': '#4c2a5c',
+            'Besucher': '#5c2a4c'
+        };
+
+        return colorMap[type] || '#4a4a4a';
+    };
+
+    // Add this helper function inside your component
+    const generateConicGradient = (data, total) => {
+        if (!data || !data.length || total <= 0) return 'conic-gradient(#333 0% 100%)';
+        
+        let gradientParts = [];
+        let currentPercentage = 0;
+        
+        data.forEach(item => {
+            const percentage = (item.count / total) * 100;
+            const nextPercentage = currentPercentage + percentage;
+            
+            gradientParts.push(`${getTypeColor(item.type)} ${currentPercentage}% ${nextPercentage}%`);
+            
+            currentPercentage = nextPercentage;
+        });
+        
+        return `conic-gradient(${gradientParts.join(', ')})`;
+    };
+
     return (
         <div className="registration-dashboard public">
             <h2 className="stats-title">Suitwalk Linz - Teilnehmer</h2>
@@ -192,43 +197,117 @@ function SuitwalkUsers() {
             ) : (
                 <>
                     {activeTab === 'stats' && (
-                        <div className="statistics-container">
-                            <div className="stat-card total-users">
-                                <h3>Gesamt</h3>
-                                <div className="stat-value">{registrationData?.totals?.users || 0}</div>
-                            </div>
-                            <div className="stat-card total-badges">
-                                <h3>Badges</h3>
-                                <div className="stat-value">{registrationData?.totals?.badges || 0}</div>
+                        <>
+                            <div className="statistics-container">
+                                <div className="stat-card total-users">
+                                    <h3>Gesamt</h3>
+                                    <div className="stat-value">{registrationData?.totals?.users || 0}</div>
+                                </div>
+                                <div className="stat-card total-badges">
+                                    <h3>Badges</h3>
+                                    <div className="stat-value">{registrationData?.totals?.badges || 0}</div>
+                                </div>
+
+                                {/* Use sorted summary data */}
+                                {getSortedSummary().map((item, index) => (
+                                    <div className={`stat-card type-${getTypeClass(item.type)}`} key={index}>
+                                        <h3>{formatTypeName(item.type) || 'Unknown'}</h3>
+                                        <div className="stat-value">{item.count}</div>
+                                        <div className="stat-sub-value">({item.badge_count} mit Badge)</div>
+                                    </div>
+                                ))}
                             </div>
 
-                            {/* Use sorted summary data */}
-                            {getSortedSummary().map((item, index) => (
-                                <div className={`stat-card type-${getTypeClass(item.type)}`} key={index}>
-                                    <h3>{formatTypeName(item.type) || 'Unknown'}</h3>
-                                    <div className="stat-value">{item.count}</div>
-                                    <div className="stat-sub-value">({item.badge_count} mit Badge)</div>
-                                </div>
-                            ))}
-                        </div>
+                            {/* Chart Type Selection */}
+                            <div className="chart-type-selector">
+                                <button 
+                                    className={`chart-type-button ${chartType === 'bar' ? 'active' : ''}`}
+                                    onClick={() => setChartType('bar')}
+                                >
+                                    Balken
+                                </button>
+                                <button 
+                                    className={`chart-type-button ${chartType === 'pie' ? 'active' : ''}`}
+                                    onClick={() => setChartType('pie')}
+                                >
+                                    Kreis
+                                </button>
+                            </div>
+
+                            {/* Visual Chart */}
+                            <div className="chart-container">
+                                <h3 className="chart-title">Teilnehmer nach Kategorie</h3>
+                                
+                                {chartType === 'bar' && (
+                                    <div className="bar-chart">
+                                        {getSortedSummary().map((item, index) => {
+                                            const percentage = registrationData?.totals?.users 
+                                                ? (item.count / registrationData.totals.users) * 100 
+                                                : 0;
+                                            
+                                            return (
+                                                <div className="chart-item" key={index}>
+                                                    <div className="chart-label">{formatTypeName(item.type)}</div>
+                                                    <div className="chart-bar-container">
+                                                        <div 
+                                                            className="chart-bar" 
+                                                            style={{
+                                                                width: `${percentage}%`,
+                                                                backgroundColor: getTypeColor(item.type)
+                                                            }}
+                                                        >
+                                                            <span className="chart-value">{item.count}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="chart-percentage">{percentage.toFixed(1)}%</div>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                )}
+                                
+                                {chartType === 'pie' && (
+                                    <div className="pie-chart-container">
+                                        <div className="pie-chart-wrapper">
+                                            <div 
+                                                className="pie-chart" 
+                                                style={{
+                                                    background: generateConicGradient(getSortedSummary(), registrationData?.totals?.users || 0)
+                                                }}
+                                            >
+                                                <div className="pie-center">
+                                                    <span className="pie-total-value">{registrationData?.totals?.users || 0}</span>
+                                                    <span className="pie-total-label">Gesamt</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="pie-legend">
+                                            {getSortedSummary().map((item, index) => {
+                                                const percentage = registrationData?.totals?.users 
+                                                    ? (item.count / registrationData.totals.users) * 100 
+                                                    : 0;
+                                                
+                                                return (
+                                                    <div key={index} className="legend-item">
+                                                        <span 
+                                                            className="legend-color" 
+                                                            style={{backgroundColor: getTypeColor(item.type)}}
+                                                        ></span>
+                                                        <span className="legend-label">{formatTypeName(item.type)}</span>
+                                                        <span className="legend-value">{item.count} ({percentage.toFixed(1)}%)</span>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </>
                     )}
 
                     {activeTab === 'attendees' && (
                         <>
-                            {/* Type filter for attendees */}
-                            <div className="attendee-filters">
-                                <select
-                                    value={filter}
-                                    onChange={(e) => setFilter(e.target.value)}
-                                    className="type-filter"
-                                >
-                                    <option value="all">Alle Teilnehmer</option>
-                                    {getAttendeeTypes().map((type, index) => (
-                                        <option key={index} value={type}>{formatTypeName(type)}</option>
-                                    ))}
-                                </select>
-                            </div>
-
                             <div className="attendees-container">
                                 {getSortedAttendeeTypes().map(([type, attendees]) => (
                                     <div className={`attendee-type-section type-${getTypeClass(type)}`} key={type}>
@@ -246,13 +325,13 @@ function SuitwalkUsers() {
                                 
                                 {getFilteredAttendees().length === 0 && (
                                     <div className="no-attendees">
-                                        <p>{filter === 'all' ? 'Noch keine Anmeldungen vorhanden.' : `Keine ${formatTypeName(filter)} angemeldet.`}</p>
+                                        <p>Noch keine Anmeldungen vorhanden.</p>
                                     </div>
                                 )}
                             </div>
 
                             <div className="attendee-info">
-                                <p>Insgesamt {getFilteredAttendees().length} Teilnehmer {filter !== 'all' ? `als ${formatTypeName(filter)}` : ''} angemeldet</p>
+                                <p>Insgesamt {getFilteredAttendees().length} Teilnehmer angemeldet</p>
                                 <p>🏷️ = Hat ein Badge bestellt</p>
                             </div>
                         </>

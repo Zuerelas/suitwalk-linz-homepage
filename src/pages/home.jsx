@@ -58,9 +58,6 @@ function Home() {
                         Informiere dich über die Anmeldung und werde Teil dieser aufregenden Veranstaltung.
                     </p>
                 </ScrollAnimation>
-                <ScrollAnimation>
-                    <Link to="/anmeldung/suiter" className="home-link">Zur Anmeldung</Link>
-                </ScrollAnimation>
 
                 <ScrollAnimation>
                     <h1>Unser nächster Suitwalk:</h1>

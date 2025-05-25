@@ -272,6 +272,13 @@ button:disabled {
   border-radius: 8px;
 }
 
+.date-format-hint {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-top: 5px;
+  font-style: italic;
+}
+
 @media (max-width: 600px) {
   .suitwalk-events-admin {
     padding: 1rem;

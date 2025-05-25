@@ -22,6 +22,7 @@ import Badges from './pages/anmeldung/badges';
 import Abmelden from './pages/anmeldung/abmelden';
 import Abgemeldet from './pages/anmeldung/abgemeldet';
 import Erfolgreich from './pages/anmeldung/erfolgreich';
+import BadgeErfolgreich from './pages/anmeldung/badgeErfolgreich';
 import Error from './pages/anmeldung/error';
 
 import FotosFotografen from './pages/galerie/fotosFotografen';
@@ -61,6 +62,7 @@ function App() {
             <Route path="/anmeldung/erfolgreich" element={<Erfolgreich />} />
             <Route path="/anmeldung/error" element={<Error />} />
             <Route path="/anmeldung/abgemeldet" element={<Abgemeldet />} />
+            <Route path="/anmeldung/badge-erfolgreich" element={<BadgeErfolgreich />} />
             <Route path="/regeln" element={<Regeln />} />
             <Route path="/galerie/fotos-fotografen" element={<FotosFotografen />} />
             <Route path="/galerie/fotos" element={<FotosFotografen />} />

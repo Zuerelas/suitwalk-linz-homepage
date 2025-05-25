@@ -7,7 +7,7 @@ function Erfolgreich() {
             <h1>Anmeldung erfolgreich!</h1>
             <div className="success-container">
                 <h3>Vielen Dank für deine Anmeldung!</h3>
-                <p className="success-icon">✓</p>
+                <div className="success-icon">✓</div>
                 <p>Deine Daten wurden erfolgreich gespeichert.</p>
                 <p>Wir freuen uns auf dich beim Suitwalk Linz!</p>
                 <h2>Noch ein Badge gefällig?</h2>
