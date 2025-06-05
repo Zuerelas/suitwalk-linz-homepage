@@ -71,6 +71,10 @@ function Sanitaeter() {
                 <div className="registration-container">
                     <h2>Die Anmeldung ist offen!</h2>
                     <p>Bitte melde dich mit deinem Telegram-Account an:</p>
+                    <div className='registration-info'>
+                        <p>Es wird als Sanitäter:in empfohlen, ein <strong>ausgebildete:r Sanitäter:in</strong> zu sein.
+                        oder in den letzten <strong>12 Monaten</strong> an einem <strong>Erste-Hilfe-Kurs</strong> teilgenommen zu haben.</p>
+                    </div>
 
                     <div className="telegram-widget-container">
                         <TelegramLoginWidget

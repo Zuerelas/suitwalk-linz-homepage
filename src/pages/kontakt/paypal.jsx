@@ -35,7 +35,7 @@ function Paypal() {
                     <h3>Über PayPal spenden</h3>
                     <p>Schnell und sicher - unterstütze uns mit deiner Spende:</p>
                     <a
-                        href="https://www.paypal.com/donate?hosted_button_id=YOURID"
+                        href="https://www.paypal.me/maxischini"
                         className="paypal-button"
                         target="_blank"
                         rel="noopener noreferrer"

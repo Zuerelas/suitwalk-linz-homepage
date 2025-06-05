@@ -38,7 +38,7 @@ function Error() {
                 <h3>Etwas ist schiefgelaufen</h3>
                 <div className="error-icon">✗</div>
                 <p>{errorMessage}</p>
-                <p>Wenn dieser Fehler öfter auftritt, kontaktiere bitte <a href="https://test.suitwalk-linz.at/#/crew">ein Teammitglied</a></p>
+                <p>Wenn dieser Fehler öfter auftritt, kontaktiere bitte <a href="/#/crew">ein Teammitglied</a></p>
                 <button onClick={handleTryAgain} className="try-again-button">
                     Zurück zur Anmeldung
                 </button>

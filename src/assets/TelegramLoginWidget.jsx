@@ -20,7 +20,7 @@ function TelegramLoginWidget({ botName, buttonSize = 'large', requestAccess = 'w
         script.setAttribute('data-size', buttonSize);
 
         // Use auth URL for all flows, including photo upload
-        const baseUrl = 'https://test.suitwalk-linz.at/api/telegram-auth';
+        const baseUrl = 'https://suitwalk-linz.at/api/telegram-auth';
         const params = new URLSearchParams();
 
         // Add query parameters if needed
