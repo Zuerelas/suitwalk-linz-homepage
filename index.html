@@ -10,6 +10,31 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suitwalk Linz</title>
+
+  <!-- Domain redirect script -->
+  <script>
+    (function () {
+      // Get the current hostname
+      var hostname = window.location.hostname;
+
+      // Redirect if hostname is ww.suitwalk-linz.at (missing a 'w')
+      if (hostname === 'ww.suitwalk-linz.at') {
+        // Keep the path, hash, and query parameters when redirecting
+        window.location.href = 'https://suitwalk-linz.at' +
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+      }
+
+      // Also redirect from www to non-www if needed
+      if (hostname === 'www.suitwalk-linz.at') {
+        window.location.href = 'https://suitwalk-linz.at' +
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+      }
+    })();
+  </script>
 </head>
 
 <body onload="window.scroll(0, 120)">

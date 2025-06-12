@@ -77,24 +77,26 @@ function Countdown({ targetDate: propTargetDate, onComplete, titleText, countdow
     // Update countdown every second
     useEffect(() => {
         if (!targetDate || loading) return;
-        
+
+        let intervalId; // Declare intervalId in the correct scope
+
         const updateCountdown = () => {
             const newTimeLeft = calculateTime(targetDate);
             setTimeLeft(newTimeLeft);
 
             if (newTimeLeft.total <= 0) {
-                clearInterval(intervalId);
+                clearInterval(intervalId); // Clear interval when countdown is complete
                 setIsComplete(true);
                 if (onComplete) onComplete();
             }
         };
-        
+
         // Initial calculation
         updateCountdown();
-        
+
         // Setup interval
-        const intervalId = setInterval(updateCountdown, 1000);
-        
+        intervalId = setInterval(updateCountdown, 1000);
+
         return () => clearInterval(intervalId); // Cleanup on unmount
     }, [targetDate, loading, onComplete]);
 

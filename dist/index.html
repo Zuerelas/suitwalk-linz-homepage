@@ -3,10 +3,39 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/img/logo.png" />
+  <link rel="icon" type="image/png" href="./assets/favicon-96x96-C2YTiHlC.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon-Df5V5Kgb.svg" />
+  <link rel="shortcut icon" href="./assets/favicon-DBs3-lD9.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon-B76R1LMR.png" />
+  <link rel="manifest" href="./assets/site-D8fYr94A.webmanifest" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suitwalk Linz</title>
-  <script type="module" crossorigin src="./assets/index-DhEX4QY5.js"></script>
+
+  <!-- Domain redirect script -->
+  <script>
+    (function () {
+      // Get the current hostname
+      var hostname = window.location.hostname;
+
+      // Redirect if hostname is ww.suitwalk-linz.at (missing a 'w')
+      if (hostname === 'ww.suitwalk-linz.at') {
+        // Keep the path, hash, and query parameters when redirecting
+        window.location.href = 'https://suitwalk-linz.at' +
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+      }
+
+      // Also redirect from www to non-www if needed
+      if (hostname === 'www.suitwalk-linz.at') {
+        window.location.href = 'https://suitwalk-linz.at' +
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+      }
+    })();
+  </script>
+  <script type="module" crossorigin src="./assets/index-boms6cvM.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-CPU8gvwc.css">
 </head>
 

@@ -22,6 +22,8 @@ function Error() {
             'register_first': 'Du musst dich zuerst registrieren, um ein Badge zu bestellen.',
             'database_error': 'Es gibt ein Problem mit der Datenbank. Bitte versuche es später erneut.',
             'not_registered': 'Du bist nicht für den Suitwalk Linz registriert. Bitte registriere dich zuerst.',
+            'registration_closed': 'Die Anmeldung ist geschlossen. Du kannst dich nicht mehr anmelden.',
+            'badge_order_error': 'Es gab ein Problem bei der Bestellung deines Badges. Bitte versuche es später erneut.',
         };
         
         setErrorMessage(errorMessages[msg]);

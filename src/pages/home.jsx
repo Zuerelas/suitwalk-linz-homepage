@@ -14,7 +14,7 @@ function Home() {
                     <h1>Suitwalk Linz</h1>
                 </ScrollAnimation>
                 <ScrollAnimation>
-                    <p>Der Größte Suitwalk Österreichs</p>
+                    <p>Der größte Suitwalk Österreichs</p>
                 </ScrollAnimation>
                 <div className="banner-buttons">
                     <ScrollAnimation>
